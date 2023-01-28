@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "344826546786",
+    "project_id": "controlderiesgos-38910",
+    "storage_bucket": "controlderiesgos-38910.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344826546786:android:de4a2eb17921c97f40df3b",
+        "android_client_info": {
+          "package_name": "com.usat.controlderiesgos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344826546786-20ih6tf169k66c6jfgfuuk64fqggb8q6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8LnJKGhqrG7tga0Vsgz3wgE4fX3OPy64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344826546786-20ih6tf169k66c6jfgfuuk64fqggb8q6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

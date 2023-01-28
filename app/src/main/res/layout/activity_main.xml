@@ -80,60 +80,18 @@
         app:layout_constraintTop_toBottomOf="@+id/Password"
         app:srcCompat="@drawable/btn_arraw1" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
-            style="@android:style/Widget.Button"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="0.5"
-            android:background="@drawable/btn_background"
-            android:drawableEnd="@drawable/facebook"
-            android:padding="16dp"
-            android:text="Facebook"
-            android:textColor="#3b608c"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button2"
-            style="@android:style/Widget.Button"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="8dp"
-            android:layout_weight="0.5"
-            android:background="@drawable/btn_background"
-            android:drawableEnd="@drawable/google"
-            android:padding="16dp"
-            android:text="Google"
-            android:textColor="#3b608c"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textStyle="bold"
+        android:layout_marginTop="32dp"
+        android:text="Eres nuevo por aqui? Regístrate"
         android:textColor="#3b608c"
         android:textSize="16sp"
-        android:text="Eres nuevo por aqui? Regístrate"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
