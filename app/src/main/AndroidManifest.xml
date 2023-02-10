@@ -12,6 +12,24 @@
         android:theme="@style/Theme.ControlDeRiesgos"
         tools:targetApi="31">
         <activity
+            android:name=".TipoActivoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UnidadOrganizacionalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VulnerabilidadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AmenazaActivity"
+            android:exported="true">
+                         <intent-filter>
+                             <action android:name="android.intent.action.MAIN" />
+
+                             <category android:name="android.intent.category.LAUNCHER" />
+                         </intent-filter>
+            </activity>
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
@@ -19,12 +37,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
