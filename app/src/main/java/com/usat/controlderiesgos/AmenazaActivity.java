@@ -24,20 +24,55 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AmenazaActivity extends AppCompatActivity {
 
-    private List<Amenaza> amenazaList;
-    List<Amenaza> lista;
-    RecyclerView rv;
+//    private List<Amenaza> amenazaList;
+//    List<Amenaza> lista;
+//    RecyclerView rv;
+    private RecyclerView recyclerView;
+    private ArrayList<Amenaza> amenazaArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_amenaza);
-
+        recyclerView= findViewById(R.id.rv);
+        amenazaArrayList= new ArrayList<>();
+        viewJsonData();
 //        mJsonTextView=findViewById(R.id.jsonText);
 //        obtenerAmenazas();
 
     }
 
+    private void viewJsonData(){
+        Retrofit retrofit = new Retrofit.Builder()
+               .baseUrl("https://controlriesgosusat.pythonanywhere.com")
+               .addConverterFactory(GsonConverterFactory.create())
+               .build();
+
+        PythonAnywhereApi pythonAnywhereApi = retrofit.create(PythonAnywhereApi.class);
+        Call<ArrayList<Amenaza>> call = pythonAnywhereApi.getAmenazas();
+        call.enqueue(new Callback<ArrayList<Amenaza>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Amenaza>> call, Response<ArrayList<Amenaza>> response) {
+                amenazaArrayList=response.body();
+                int i=0;
+                LinearLayoutManager manager;
+                AmenazaAdapter adapter;
+                for (i=0;i<amenazaArrayList.size();i++){
+
+                    manager = new LinearLayoutManager(getApplicationContext());
+                    recyclerView.setLayoutManager(manager);
+                    recyclerView.setHasFixedSize(true);
+                    adapter = new AmenazaAdapter(amenazaArrayList,getApplicationContext());
+                    recyclerView.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Amenaza>> call, Throwable t) {
+
+            }
+        });
+    }
 
 //    private void obtenerAmenazas() {
 //        Retrofit retrofit = new Retrofit.Builder()
