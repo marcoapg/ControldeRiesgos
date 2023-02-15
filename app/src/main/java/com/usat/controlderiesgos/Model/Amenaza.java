@@ -5,6 +5,11 @@ public class Amenaza {
     private int amenazaid;
     private String descripcion;
 
+    public Amenaza(int amenazaid, String descripcion) {
+        this.amenazaid = amenazaid;
+        this.descripcion = descripcion;
+    }
+
     public int getAmenazaid() {
         return amenazaid;
     }
