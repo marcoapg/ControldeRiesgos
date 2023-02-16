@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="10sp"
 
-    android:background="@drawable/rounded_edge"
+    android:background="@drawable/semi_rounded_edge"
     android:orientation="horizontal"
     android:padding="5sp">
 

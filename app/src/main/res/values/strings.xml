@@ -9,7 +9,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Control de Riesgos</string>
     <string name="menu_amenazas">Amenazas</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tipoactivo">Tipos Activo</string>
+    <string name="menu_riesgos">Riesgos</string>
+    <string name="menu_vulnerabilidades">Vulnerabilidades</string>
+    <string name="menu_activos">Activos</string>
 </resources>
