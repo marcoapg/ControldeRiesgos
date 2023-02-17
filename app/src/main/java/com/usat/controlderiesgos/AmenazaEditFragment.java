@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,6 @@ public class AmenazaEditFragment extends Fragment {
     private FragmentAmenazaEditBinding binding;
 
     public AmenazaEditFragment() {
-
 
     }
 
@@ -59,8 +59,12 @@ public class AmenazaEditFragment extends Fragment {
         amenazaIdEdt = root.findViewById(R.id.idEdtAmenazaID);
         amenazaDescEdt = root.findViewById(R.id.idEdtAmenazaDescripcion);
 
-        
-        
+        Bundle bundle = this.getArguments();
+
+        if(bundle != null){
+            Log.i("AmenazaID",String.valueOf(bundle.getInt("amenazaid")));
+            amenazaIdEdt.setText(String.valueOf(bundle.getInt("amenazaid")));
+        }
 
 
         return root;

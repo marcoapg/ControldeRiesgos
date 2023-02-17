@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.usat.controlderiesgos.AmenazaActivity;
 import com.usat.controlderiesgos.AmenazaAdapter;
+import com.usat.controlderiesgos.AmenazaEditFragment;
 import com.usat.controlderiesgos.Interface.PythonAnywhereApi;
 import com.usat.controlderiesgos.Model.Amenaza;
 import com.usat.controlderiesgos.Model.DeleteRequest;
@@ -136,7 +137,17 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
         editarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bottomSheetTeachersDialog.cancel();
+                Bundle bundle = new Bundle();
+                bundle.putInt("amenazaid",amenaza.getAmenazaid());
 
+                AmenazaEditFragment fragment2 = new AmenazaEditFragment();
+                fragment2.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment_content_navigation_drawer, fragment2)
+                        .commit();
             }
         });
 
