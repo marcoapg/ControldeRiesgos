@@ -9,9 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.usat.controlderiesgos.Interface.PythonAnywhereApi;
 import com.usat.controlderiesgos.Model.Amenaza;
+import com.usat.controlderiesgos.Model.DeleteRequest;
+import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.databinding.FragmentAmenazaEditBinding;
 
 
@@ -21,9 +25,11 @@ public class AmenazaEditFragment extends Fragment {
 
     Amenaza amenaza;
 
-    private String amenazaId;
+    private int amenazaId;
 
     private FragmentAmenazaEditBinding binding;
+
+
 
     public AmenazaEditFragment() {
 
@@ -64,9 +70,43 @@ public class AmenazaEditFragment extends Fragment {
         if(bundle != null){
             Log.i("AmenazaID",String.valueOf(bundle.getInt("amenazaid")));
             amenazaIdEdt.setText(String.valueOf(bundle.getInt("amenazaid")));
+            amenazaId=bundle.getInt("amenazaid");
+            cargarAmenaza();
         }
 
 
+
         return root;
+    }
+
+    private void cargarAmenaza(){
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://controlriesgosusat.pythonanywhere.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        PythonAnywhereApi pythonAnywhereApi = retrofit.create(PythonAnywhereApi.class);
+
+        DeleteRequest obj = new DeleteRequest();
+
+        obj.setId(amenazaId);
+
+        Call<Amenaza> call = pythonAnywhereApi.obtenerAmenazaId(obj);
+
+        call.enqueue(new Callback<Amenaza>() {
+            @Override
+            public void onResponse(Call<Amenaza> call, Response<Amenaza> response) {
+                Amenaza obj = response.body();
+                Log.i("Descripcion",obj.getDescripcion());
+
+            }
+
+            @Override
+            public void onFailure(Call<Amenaza> call, Throwable t) {
+                Toast.makeText(getActivity(),t.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }
