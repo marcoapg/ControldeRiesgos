@@ -1,6 +1,7 @@
 package com.usat.controlderiesgos.ui.amenaza;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -70,6 +71,7 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
         viewJsonData(this::onAmenazaClick);
         return root;
     }
+
 
     @Override
     public void onDestroyView() {
@@ -143,13 +145,15 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
             public void onClick(View view) {
                 eliminarRegistro(amenaza);
                 bottomSheetTeachersDialog.cancel();
+                androidx.fragment.app.FragmentTransaction ft = getFragmentManager().beginTransaction().replace(R.id.frAmenazaLayout, new AmenazaFragment());
+                ft.commit();
+                //                Intent reload = new Intent(getActivity(),getActivity().getClass());
+//                startActivity(reload);
 
             }
         });
 
     }
-
-
 
     private void eliminarRegistro(Amenaza objAmenaza){
 
@@ -179,7 +183,6 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
             @Override
             public void onFailure(Call<ResponsePython> call, Throwable t) {
                 Toast.makeText(getActivity(),t.getMessage(),Toast.LENGTH_SHORT).show();
-
             }
         });
 
