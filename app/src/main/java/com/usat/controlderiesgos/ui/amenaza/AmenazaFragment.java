@@ -105,8 +105,8 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
     }
 
     private void displayBottomSheet(Amenaza amenaza){
-        Log.e("botonXD", "hola");
-        final BottomSheetDialog bottomSheetTeachersDialog = new BottomSheetDialog(getActivity(), R.style.Theme_ControlDeRiesgos);
+
+        final BottomSheetDialog bottomSheetTeachersDialog = new BottomSheetDialog(getActivity(), R.style.BottomSheetDialogTheme);
 
         View layout = LayoutInflater.from(getActivity()).inflate(R.layout.bottom_sheet_layout, homeRL);
 

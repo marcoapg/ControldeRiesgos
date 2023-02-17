@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/idBSL"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -45,10 +44,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:layout_weight="1"
-            android:text="Editar"
-            android:textColor="@color/textColorSecondary"
             android:backgroundTint="@color/textColorPrimaryLight"
-            android:textAllCaps="false" />
+            android:text="Editar"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorSecondary" />
 
         <!--button for viewing course details-->
         <Button
@@ -57,10 +56,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:layout_weight="1"
-            android:text="Eliminar"
-            android:textColor="@color/textColorSecondary"
             android:backgroundTint="@color/textColorPrimaryLight"
-            android:textAllCaps="false" />
+            android:text="Eliminar"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorSecondary" />
 
     </LinearLayout>
 </RelativeLayout>
