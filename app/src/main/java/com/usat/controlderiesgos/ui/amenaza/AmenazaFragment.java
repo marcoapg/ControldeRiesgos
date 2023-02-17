@@ -1,5 +1,6 @@
 package com.usat.controlderiesgos.ui.amenaza;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import com.usat.controlderiesgos.AmenazaActivity;
 import com.usat.controlderiesgos.AmenazaAdapter;
 import com.usat.controlderiesgos.Interface.PythonAnywhereApi;
 import com.usat.controlderiesgos.Model.Amenaza;
+import com.usat.controlderiesgos.Model.DeleteRequest;
 import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.R;
 import com.usat.controlderiesgos.databinding.BottomSheetLayoutBinding;
@@ -41,6 +43,7 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
     private FragmentAmenazaBinding binding;
 
     private AmenazaAdapter amenazaAdapter;
+
 
     private RelativeLayout homeRL;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -139,10 +142,14 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
             @Override
             public void onClick(View view) {
                 eliminarRegistro(amenaza);
+                bottomSheetTeachersDialog.cancel();
+
             }
         });
 
     }
+
+
 
     private void eliminarRegistro(Amenaza objAmenaza){
 
@@ -155,23 +162,26 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
 
         PythonAnywhereApi pythonAnywhereApi = retrofit.create(PythonAnywhereApi.class);
 
-        Amenaza amenazaEliminar = null;
+        DeleteRequest obj = new DeleteRequest();
 
-        amenazaEliminar.setAmenazaid(idEliminar);
+        obj.setId(idEliminar);
 
-        Call<ResponsePython> call = pythonAnywhereApi.eliminarAmenaza(amenazaEliminar);
-                call.enqueue(new Callback<ResponsePython>() {
-                    @Override
-                    public void onResponse(Call<ResponsePython> call, Response<ResponsePython> response) {
-                        ResponsePython obj = response.body();
-                            Toast.makeText(getActivity(),obj.getMensaje(),Toast.LENGTH_SHORT).show();  
-                    }
-        
-                    @Override
-                    public void onFailure(Call<ResponsePython> call, Throwable t) {
-        
-                    }
-                });
+        Call<ResponsePython> call = pythonAnywhereApi.eliminarAmenaza(obj);
+
+        call.enqueue(new Callback<ResponsePython>() {
+            @Override
+            public void onResponse(Call<ResponsePython> call, Response<ResponsePython> response) {
+                ResponsePython obj = response.body();
+                Toast.makeText(getActivity(),obj.getMensaje(),Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponsePython> call, Throwable t) {
+                Toast.makeText(getActivity(),t.getMessage(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
     }

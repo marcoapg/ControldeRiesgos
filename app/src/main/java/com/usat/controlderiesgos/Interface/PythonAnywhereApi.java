@@ -1,6 +1,7 @@
 package com.usat.controlderiesgos.Interface;
 
 import com.usat.controlderiesgos.Model.Amenaza;
+import com.usat.controlderiesgos.Model.DeleteRequest;
 import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.Model.TipoActivo;
 import com.usat.controlderiesgos.Model.UnidadOrganizacional;
@@ -20,7 +21,7 @@ public interface PythonAnywhereApi {
     Call<ArrayList<Amenaza>> getAmenazas();
 
     @POST("api_eliminaramenaza")
-    Call<ResponsePython> eliminarAmenaza(@Body Amenaza amenaza);
+    Call<ResponsePython> eliminarAmenaza(@Body DeleteRequest deleteRequest);
 
     @GET("api_obtenertiposactivo")
     Call<List<TipoActivo>> getTiposActivos();

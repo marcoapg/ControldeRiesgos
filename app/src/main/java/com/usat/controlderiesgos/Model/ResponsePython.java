@@ -2,13 +2,10 @@ package com.usat.controlderiesgos.Model;
 
 public class ResponsePython {
     
-    private String mensaje;
+    private String Mensaje;
 
     public String getMensaje() {
-        return mensaje;
+        return Mensaje;
     }
 
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
-    }
 }
