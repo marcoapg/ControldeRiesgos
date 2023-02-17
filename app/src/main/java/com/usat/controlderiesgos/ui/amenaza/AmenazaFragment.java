@@ -1,9 +1,13 @@
 package com.usat.controlderiesgos.ui.amenaza;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -11,10 +15,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.usat.controlderiesgos.AmenazaActivity;
 import com.usat.controlderiesgos.AmenazaAdapter;
 import com.usat.controlderiesgos.Interface.PythonAnywhereApi;
 import com.usat.controlderiesgos.Model.Amenaza;
 import com.usat.controlderiesgos.R;
+import com.usat.controlderiesgos.databinding.BottomSheetLayoutBinding;
 import com.usat.controlderiesgos.databinding.FragmentAmenazaBinding;
 
 import java.util.ArrayList;
@@ -31,6 +38,9 @@ public class AmenazaFragment extends Fragment {
     private ArrayList<Amenaza> amenazaArrayList;
     private FragmentAmenazaBinding binding;
 
+    private AmenazaAdapter amenazaAdapter;
+
+    private RelativeLayout homeRL;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         AmenazaViewModel amenazaViewModel =
@@ -39,10 +49,19 @@ public class AmenazaFragment extends Fragment {
         binding = FragmentAmenazaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        homeRL = root.findViewById(R.id.idBSL);
+
 //        final TextView textView = binding.textGallery;
 //        amenazaViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         recyclerView= root.findViewById(R.id.rv);
         amenazaArrayList= new ArrayList<>();
+
+        amenazaAdapter = new AmenazaAdapter(amenazaArrayList, getActivity(), this::onAmenazaClick);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        recyclerView.setAdapter(amenazaAdapter);
+
         viewJsonData();
         return root;
     }
@@ -73,7 +92,7 @@ public class AmenazaFragment extends Fragment {
                     manager = new LinearLayoutManager(getActivity());
                     recyclerView.setLayoutManager(manager);
                     recyclerView.setHasFixedSize(true);
-                    adapter = new AmenazaAdapter(amenazaArrayList,getActivity());
+                    adapter = new AmenazaAdapter(amenazaArrayList,getActivity(),null);
                     recyclerView.setAdapter(adapter);
                 }
             }
@@ -84,4 +103,48 @@ public class AmenazaFragment extends Fragment {
             }
         });
     }
+
+    private void displayBottomSheet(Amenaza amenaza){
+        Log.e("botonXD", "hola");
+        final BottomSheetDialog bottomSheetTeachersDialog = new BottomSheetDialog(getActivity(), R.style.Theme_ControlDeRiesgos);
+
+        View layout = LayoutInflater.from(getActivity()).inflate(R.layout.bottom_sheet_layout, homeRL);
+
+        bottomSheetTeachersDialog.setContentView(layout);
+
+        bottomSheetTeachersDialog.setCancelable(false);
+        bottomSheetTeachersDialog.setCanceledOnTouchOutside(true);
+
+        bottomSheetTeachersDialog.show();
+
+        TextView amenazaIdTV = layout.findViewById(R.id.idTVId);
+        TextView amenazaDescripcionTV = layout.findViewById(R.id.idTVDescripcion);
+
+        amenazaIdTV.setText(amenaza.getAmenazaid());
+        amenazaDescripcionTV.setText(amenaza.getDescripcion());
+
+        Button editarBtn = layout.findViewById(R.id.idBtnEditar);
+        Button eliminarBtn = layout.findViewById(R.id.idBtnEliminar);
+
+        editarBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        eliminarBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+    }
+
+    public void onAmenazaClick(int position){
+        displayBottomSheet(amenazaArrayList.get(position));
+    }
+
+
 }

@@ -19,9 +19,12 @@ public class AmenazaAdapter extends RecyclerView.Adapter<AmenazaAdapter.ViewHold
     private ArrayList<Amenaza> amenazaArrayList;
     private Context context;
 
-    public AmenazaAdapter(ArrayList<Amenaza> amenazaArrayList, Context context) {
+    private AmenazaClickInterface amenazaClickInterface;
+
+    public AmenazaAdapter(ArrayList<Amenaza> amenazaArrayList, Context context, AmenazaClickInterface amenazaClickInterface) {
         this.amenazaArrayList = amenazaArrayList;
         this.context = context;
+        this.amenazaClickInterface = amenazaClickInterface;
     }
 
     @NonNull
@@ -52,4 +55,9 @@ public class AmenazaAdapter extends RecyclerView.Adapter<AmenazaAdapter.ViewHold
             descripciontxt=itemView.findViewById(R.id.tvDescripcion);
         }
     }
+
+    public interface AmenazaClickInterface{
+        void onAmenazaClick(int position);
+    }
+
 }

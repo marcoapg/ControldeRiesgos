@@ -62,7 +62,7 @@ public class AmenazaActivity extends AppCompatActivity {
                     manager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(manager);
                     recyclerView.setHasFixedSize(true);
-                    adapter = new AmenazaAdapter(amenazaArrayList,getApplicationContext());
+                    adapter = new AmenazaAdapter(amenazaArrayList,getApplicationContext(),null);
                     recyclerView.setAdapter(adapter);
                 }
             }
