@@ -23,6 +23,9 @@ public interface PythonAnywhereApi {
     @POST("api_eliminaramenaza")
     Call<ResponsePython> eliminarAmenaza(@Body DeleteRequest deleteRequest);
 
+    @POST("api_actualizaramenaza")
+    Call<ResponsePython> actualizarAmenaza(@Body Amenaza amenaza);
+
     @GET("api_obtenertiposactivo")
     Call<List<TipoActivo>> getTiposActivos();
 
