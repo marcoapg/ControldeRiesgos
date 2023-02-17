@@ -146,7 +146,7 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
                 eliminarRegistro(amenaza);
                 bottomSheetTeachersDialog.cancel();
                 androidx.fragment.app.FragmentTransaction ft = getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_navigation_drawer, new AmenazaFragment());
-                ft.commit();
+                ft.commit();//aaaa
                 //                Intent reload = new Intent(getActivity(),getActivity().getClass());
 //                startActivity(reload);
 
