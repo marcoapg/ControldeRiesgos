@@ -1,6 +1,6 @@
 package com.usat.controlderiesgos.Model;
 
-public class Response {
+public class ResponsePython {
     
     private String mensaje;
 

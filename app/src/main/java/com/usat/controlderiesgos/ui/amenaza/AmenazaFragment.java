@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -20,6 +21,7 @@ import com.usat.controlderiesgos.AmenazaActivity;
 import com.usat.controlderiesgos.AmenazaAdapter;
 import com.usat.controlderiesgos.Interface.PythonAnywhereApi;
 import com.usat.controlderiesgos.Model.Amenaza;
+import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.R;
 import com.usat.controlderiesgos.databinding.BottomSheetLayoutBinding;
 import com.usat.controlderiesgos.databinding.FragmentAmenazaBinding;
@@ -136,9 +138,41 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
         eliminarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                eliminarRegistro(amenaza);
             }
         });
+
+    }
+
+    private void eliminarRegistro(Amenaza objAmenaza){
+
+        int idEliminar = objAmenaza.getAmenazaid();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://controlriesgosusat.pythonanywhere.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        PythonAnywhereApi pythonAnywhereApi = retrofit.create(PythonAnywhereApi.class);
+
+        Amenaza amenazaEliminar = null;
+
+        amenazaEliminar.setAmenazaid(idEliminar);
+
+        Call<ResponsePython> call = pythonAnywhereApi.eliminarAmenaza(amenazaEliminar);
+                call.enqueue(new Callback<ResponsePython>() {
+                    @Override
+                    public void onResponse(Call<ResponsePython> call, Response<ResponsePython> response) {
+                        ResponsePython obj = response.body();
+                            Toast.makeText(getActivity(),obj.getMensaje(),Toast.LENGTH_SHORT).show();  
+                    }
+        
+                    @Override
+                    public void onFailure(Call<ResponsePython> call, Throwable t) {
+        
+                    }
+                });
+
 
     }
 

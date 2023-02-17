@@ -39,4 +39,9 @@
         <item name="android:background">@drawable/rounded_edge_home</item>
     </style>
 
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">#296D98</item>
+        <item name="boxStrokeWidth">1dp</item>
+    </style>
+
 </resources>
