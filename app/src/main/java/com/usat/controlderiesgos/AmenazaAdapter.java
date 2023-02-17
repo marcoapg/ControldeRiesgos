@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ public class AmenazaAdapter extends RecyclerView.Adapter<AmenazaAdapter.ViewHold
 
     private ArrayList<Amenaza> amenazaArrayList;
     private Context context;
+
 
     private AmenazaClickInterface amenazaClickInterface;
 
@@ -39,6 +41,12 @@ public class AmenazaAdapter extends RecyclerView.Adapter<AmenazaAdapter.ViewHold
         Amenaza amenaza = amenazaArrayList.get(position);
         holder.amenazaidtxt.setText(String.valueOf(amenaza.getAmenazaid()));
         holder.descripciontxt.setText(amenaza.getDescripcion());
+        holder.itemLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                amenazaClickInterface.onAmenazaClick(position);
+            }
+        });
     }
 
     @Override
@@ -47,12 +55,16 @@ public class AmenazaAdapter extends RecyclerView.Adapter<AmenazaAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView amenazaidtxt,descripciontxt;
+        private TextView amenazaidtxt,descripciontxt;
+
+        private LinearLayout itemLayout;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             amenazaidtxt=itemView.findViewById(R.id.tvAmenazaId);
             descripciontxt=itemView.findViewById(R.id.tvDescripcion);
+            itemLayout = itemView.findViewById(R.id.itemLl);
         }
     }
 

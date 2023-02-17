@@ -32,7 +32,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class AmenazaFragment extends Fragment {
+public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaClickInterface {
 
     private RecyclerView recyclerView;
     private ArrayList<Amenaza> amenazaArrayList;
@@ -62,7 +62,7 @@ public class AmenazaFragment extends Fragment {
 
         recyclerView.setAdapter(amenazaAdapter);
 
-        viewJsonData();
+        viewJsonData(this::onAmenazaClick);
         return root;
     }
 
@@ -72,7 +72,7 @@ public class AmenazaFragment extends Fragment {
         binding = null;
     }
 
-    private void viewJsonData(){
+    private void viewJsonData(AmenazaAdapter.AmenazaClickInterface amenazaClickInterface){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://controlriesgosusat.pythonanywhere.com")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -92,7 +92,7 @@ public class AmenazaFragment extends Fragment {
                     manager = new LinearLayoutManager(getActivity());
                     recyclerView.setLayoutManager(manager);
                     recyclerView.setHasFixedSize(true);
-                    adapter = new AmenazaAdapter(amenazaArrayList,getActivity(),null);
+                    adapter = new AmenazaAdapter(amenazaArrayList,getActivity(),amenazaClickInterface);
                     recyclerView.setAdapter(adapter);
                 }
             }
@@ -120,7 +120,7 @@ public class AmenazaFragment extends Fragment {
         TextView amenazaIdTV = layout.findViewById(R.id.idTVId);
         TextView amenazaDescripcionTV = layout.findViewById(R.id.idTVDescripcion);
 
-        amenazaIdTV.setText(amenaza.getAmenazaid());
+        amenazaIdTV.setText(String.valueOf(amenaza.getAmenazaid()));
         amenazaDescripcionTV.setText(amenaza.getDescripcion());
 
         Button editarBtn = layout.findViewById(R.id.idBtnEditar);
