@@ -14,6 +14,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface PythonAnywhereApi {
 
@@ -26,7 +28,7 @@ public interface PythonAnywhereApi {
     @POST("api_actualizaramenaza")
     Call<ResponsePython> actualizarAmenaza(@Body Amenaza amenaza);
     @GET("api_obteneramenaza/{id}")
-    Call<Amenaza> obtenerAmenazaId(@Path("id") DeleteRequest deleteRequest);
+    Call<Amenaza> obtenerAmenazaId(@Path("id") String amenazaid);
 
     @GET("api_obtenertiposactivo")
     Call<List<TipoActivo>> getTiposActivos();

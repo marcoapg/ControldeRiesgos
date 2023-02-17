@@ -18,6 +18,12 @@ import com.usat.controlderiesgos.Model.DeleteRequest;
 import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.databinding.FragmentAmenazaEditBinding;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class AmenazaEditFragment extends Fragment {
 
@@ -76,6 +82,8 @@ public class AmenazaEditFragment extends Fragment {
 
 
 
+
+
         return root;
     }
 
@@ -92,19 +100,23 @@ public class AmenazaEditFragment extends Fragment {
 
         obj.setId(amenazaId);
 
-        Call<Amenaza> call = pythonAnywhereApi.obtenerAmenazaId(obj);
+        Call<Amenaza> call = pythonAnywhereApi.obtenerAmenazaId(String.valueOf(amenazaId));
 
         call.enqueue(new Callback<Amenaza>() {
             @Override
             public void onResponse(Call<Amenaza> call, Response<Amenaza> response) {
-                Amenaza obj = response.body();
-                Log.i("Descripcion",obj.getDescripcion());
+                if(response.isSuccessful()){
+                    Amenaza obj = response.body();
+                    Log.i("Descripcion: ", "entró correctamente xd");
+                }else{
+                    Log.i( "Descripcion: ", "xd");
+                }
 
             }
 
             @Override
             public void onFailure(Call<Amenaza> call, Throwable t) {
-                Toast.makeText(getActivity(),t.getMessage(),Toast.LENGTH_SHORT).show();
+                    Log.i("Fallo", t.getMessage());
             }
         });
 
