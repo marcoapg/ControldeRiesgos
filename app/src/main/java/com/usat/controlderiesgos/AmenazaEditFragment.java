@@ -83,11 +83,41 @@ public class AmenazaEditFragment extends Fragment {
             cargarAmenaza();
         }
 
+        editAmenazaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-
-
+            }
+        });
 
         return root;
+    }
+
+    private void actualizarAmenaza(){
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("https://controlriesgosusat.pythonanywhere.com")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        PythonAnywhereApi pythonAnywhereApi = retrofit.create(PythonAnywhereApi.class);
+
+        Amenaza objEdit = new Amenaza(Integer.parseInt(String.valueOf(amenazaIdEdt.getText())),String.valueOf(amenazaDescEdt.getText()));
+
+        Call<ResponsePython> call = pythonAnywhereApi.actualizarAmenaza(objEdit);
+
+        call.enqueue(new Callback<ResponsePython>() {
+            @Override
+            public void onResponse(Call<ResponsePython> call, Response<ResponsePython> response) {
+                ResponsePython obj = response.body();
+                Toast.makeText(getActivity(),obj.getMensaje(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<ResponsePython> call, Throwable t) {
+                Toast.makeText(getActivity(),t.getMessage(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
 
     private void cargarAmenaza(){

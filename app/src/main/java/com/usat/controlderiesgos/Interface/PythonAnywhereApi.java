@@ -27,6 +27,7 @@ public interface PythonAnywhereApi {
 
     @POST("api_actualizaramenaza")
     Call<ResponsePython> actualizarAmenaza(@Body Amenaza amenaza);
+
     @GET("api_obteneramenaza/{id}")
     Call<ArrayList<Amenaza>> obtenerAmenazaId(@Path("id") String amenazaid);
 
