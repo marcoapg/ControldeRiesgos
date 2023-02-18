@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.usat.controlderiesgos.Interface.PythonAnywhereApi;
 import com.usat.controlderiesgos.Model.Amenaza;
 import com.usat.controlderiesgos.Model.DeleteRequest;
@@ -39,6 +40,7 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
 
     private AmenazaAdapter amenazaAdapter;
 
+    private FloatingActionButton addBtn;
 
     private RelativeLayout homeRL;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -61,6 +63,16 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         recyclerView.setAdapter(amenazaAdapter);
+
+        addBtn = root.findViewById(R.id.fab);
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                androidx.fragment.app.FragmentTransaction refresh = getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_navigation_drawer, new AmenazaAddFragment());
+                refresh.commit();
+            }
+        });
 
         viewJsonData(this::onAmenazaClick);
         return root;
