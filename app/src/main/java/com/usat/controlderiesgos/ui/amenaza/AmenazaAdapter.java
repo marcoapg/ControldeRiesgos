@@ -1,4 +1,4 @@
-package com.usat.controlderiesgos;
+package com.usat.controlderiesgos.ui.amenaza;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.usat.controlderiesgos.Model.Amenaza;
+import com.usat.controlderiesgos.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class AmenazaAdapter extends RecyclerView.Adapter<AmenazaAdapter.ViewHolder> {

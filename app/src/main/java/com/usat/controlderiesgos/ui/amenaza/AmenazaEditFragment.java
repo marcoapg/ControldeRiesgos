@@ -1,4 +1,4 @@
-package com.usat.controlderiesgos;
+package com.usat.controlderiesgos.ui.amenaza;
 
 import android.os.Bundle;
 
@@ -16,8 +16,8 @@ import com.usat.controlderiesgos.Interface.PythonAnywhereApi;
 import com.usat.controlderiesgos.Model.Amenaza;
 import com.usat.controlderiesgos.Model.DeleteRequest;
 import com.usat.controlderiesgos.Model.ResponsePython;
+import com.usat.controlderiesgos.R;
 import com.usat.controlderiesgos.databinding.FragmentAmenazaEditBinding;
-import com.usat.controlderiesgos.ui.amenaza.AmenazaFragment;
 
 import java.util.ArrayList;
 

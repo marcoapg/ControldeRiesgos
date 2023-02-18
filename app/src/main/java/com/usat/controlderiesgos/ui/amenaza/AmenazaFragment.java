@@ -1,9 +1,6 @@
 package com.usat.controlderiesgos.ui.amenaza;
 
-import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,15 +16,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.usat.controlderiesgos.AmenazaActivity;
-import com.usat.controlderiesgos.AmenazaAdapter;
-import com.usat.controlderiesgos.AmenazaEditFragment;
 import com.usat.controlderiesgos.Interface.PythonAnywhereApi;
 import com.usat.controlderiesgos.Model.Amenaza;
 import com.usat.controlderiesgos.Model.DeleteRequest;
 import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.R;
-import com.usat.controlderiesgos.databinding.BottomSheetLayoutBinding;
 import com.usat.controlderiesgos.databinding.FragmentAmenazaBinding;
 
 import java.util.ArrayList;
