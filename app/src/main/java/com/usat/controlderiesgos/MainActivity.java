@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView btnLogin;
     FirebaseAuth mAuth;
 
+    TextView mRegister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +37,19 @@ public class MainActivity extends AppCompatActivity {
         contrasenaLogin = findViewById(R.id.Password);
         btnLogin = findViewById(R.id.imageView3);
         mAuth = FirebaseAuth.getInstance();
-
+        mRegister = findViewById(R.id.tvRegister);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
                 login();
+            }
+        });
+
+        mRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(i);
             }
         });
 
