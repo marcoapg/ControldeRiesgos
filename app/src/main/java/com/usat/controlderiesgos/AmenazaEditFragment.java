@@ -18,6 +18,8 @@ import com.usat.controlderiesgos.Model.DeleteRequest;
 import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.databinding.FragmentAmenazaEditBinding;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,6 +32,7 @@ public class AmenazaEditFragment extends Fragment {
     private TextInputEditText amenazaIdEdt, amenazaDescEdt;
 
     Amenaza amenaza;
+    private ArrayList<Amenaza> amenazaArrayList;
 
     private int amenazaId;
 
@@ -70,7 +73,7 @@ public class AmenazaEditFragment extends Fragment {
 
         amenazaIdEdt = root.findViewById(R.id.idEdtAmenazaID);
         amenazaDescEdt = root.findViewById(R.id.idEdtAmenazaDescripcion);
-
+        amenazaArrayList= new ArrayList<>();
         Bundle bundle = this.getArguments();
 
         if(bundle != null){
@@ -100,23 +103,24 @@ public class AmenazaEditFragment extends Fragment {
 
         obj.setId(amenazaId);
 
-        Call<Amenaza> call = pythonAnywhereApi.obtenerAmenazaId(String.valueOf(amenazaId));
+        Call<ArrayList<Amenaza>> call = pythonAnywhereApi.obtenerAmenazaId(String.valueOf(amenazaId));
 
-        call.enqueue(new Callback<Amenaza>() {
+        call.enqueue(new Callback<ArrayList<Amenaza>>() {
             @Override
-            public void onResponse(Call<Amenaza> call, Response<Amenaza> response) {
+            public void onResponse(Call<ArrayList<Amenaza>> call, Response<ArrayList<Amenaza>> response) {
                 if(response.isSuccessful()){
-                    Amenaza obj = response.body();
-                    Log.i("Descripcion: ", "entró correctamente xd");
+                    amenazaArrayList=response.body();
+                    Log.i("Descripcion: ", amenazaArrayList.get(0).getDescripcion());
+                    amenazaDescEdt.setText(amenazaArrayList.get(0).getDescripcion());
                 }else{
                     Log.i( "Descripcion: ", "xd");
                 }
-
             }
 
             @Override
-            public void onFailure(Call<Amenaza> call, Throwable t) {
-                    Log.i("Fallo", t.getMessage());
+            public void onFailure(Call<ArrayList<Amenaza>> call, Throwable t) {
+                Log.i("Fallo", t.getMessage());
+
             }
         });
 
