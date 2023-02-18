@@ -69,8 +69,12 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                androidx.fragment.app.FragmentTransaction refresh = getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_navigation_drawer, new AmenazaAddFragment());
-                refresh.commit();
+                AmenazaAddFragment fragment2 = new AmenazaAddFragment();
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment_content_navigation_drawer, fragment2)
+                        .commit();
             }
         });
 
@@ -161,8 +165,7 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
             public void onClick(View view) {
                 eliminarRegistro(amenaza);
                 bottomSheetTeachersDialog.cancel();
-                androidx.fragment.app.FragmentTransaction refresh = getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_navigation_drawer, new AmenazaFragment());
-                refresh.commit();
+
             }
         });
 
@@ -190,7 +193,12 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
             public void onResponse(Call<ResponsePython> call, Response<ResponsePython> response) {
                 ResponsePython obj = response.body();
                 Toast.makeText(getActivity(),obj.getMensaje(),Toast.LENGTH_SHORT).show();
+                AmenazaFragment fragment2 = new AmenazaFragment();
 
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment_content_navigation_drawer, fragment2)
+                        .commit();
             }
 
             @Override

@@ -115,8 +115,12 @@ public class AmenazaEditFragment extends Fragment {
                 if(response.isSuccessful()){
                     ResponsePython obj = response.body();
                     Toast.makeText(getActivity(),obj.getMensaje(),Toast.LENGTH_SHORT).show();
-                    androidx.fragment.app.FragmentTransaction refresh = getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_navigation_drawer, new AmenazaFragment());
-                    refresh.commit();
+                    AmenazaFragment fragment2 = new AmenazaFragment();
+
+                    getFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.nav_host_fragment_content_navigation_drawer, fragment2)
+                            .commit();
                 }else{
                     Log.i("API","No Success");
                 }
