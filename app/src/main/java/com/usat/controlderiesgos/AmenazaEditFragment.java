@@ -17,6 +17,7 @@ import com.usat.controlderiesgos.Model.Amenaza;
 import com.usat.controlderiesgos.Model.DeleteRequest;
 import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.databinding.FragmentAmenazaEditBinding;
+import com.usat.controlderiesgos.ui.amenaza.AmenazaFragment;
 
 import java.util.ArrayList;
 
@@ -74,6 +75,8 @@ public class AmenazaEditFragment extends Fragment {
         amenazaIdEdt = root.findViewById(R.id.idEdtAmenazaID);
         amenazaDescEdt = root.findViewById(R.id.idEdtAmenazaDescripcion);
         amenazaArrayList= new ArrayList<>();
+
+
         Bundle bundle = this.getArguments();
 
         if(bundle != null){
@@ -86,7 +89,7 @@ public class AmenazaEditFragment extends Fragment {
         editAmenazaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                actualizarAmenaza();
             }
         });
 
@@ -104,11 +107,21 @@ public class AmenazaEditFragment extends Fragment {
 
         Call<ResponsePython> call = pythonAnywhereApi.actualizarAmenaza(objEdit);
 
+
+
         call.enqueue(new Callback<ResponsePython>() {
             @Override
             public void onResponse(Call<ResponsePython> call, Response<ResponsePython> response) {
-                ResponsePython obj = response.body();
-                Toast.makeText(getActivity(),obj.getMensaje(),Toast.LENGTH_SHORT).show();
+                if(response.isSuccessful()){
+                    ResponsePython obj = response.body();
+                    Toast.makeText(getActivity(),obj.getMensaje(),Toast.LENGTH_SHORT).show();
+                    androidx.fragment.app.FragmentTransaction refresh = getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_navigation_drawer, new AmenazaFragment());
+                    refresh.commit();
+                }else{
+                    Log.i("API","No Success");
+                }
+
+
             }
 
             @Override
@@ -119,6 +132,7 @@ public class AmenazaEditFragment extends Fragment {
         });
 
     }
+
 
     private void cargarAmenaza(){
 
