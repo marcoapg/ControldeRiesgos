@@ -1,11 +1,13 @@
 package com.usat.controlderiesgos.ui.amenaza;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,11 +39,11 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
     private RecyclerView recyclerView;
     private ArrayList<Amenaza> amenazaArrayList;
     private FragmentAmenazaBinding binding;
-
     private AmenazaAdapter amenazaAdapter;
-
     private FloatingActionButton addBtn;
+    private SearchView svBuscar;
 
+    private boolean searchOn;
     private RelativeLayout homeRL;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
         recyclerView.setAdapter(amenazaAdapter);
 
         addBtn = root.findViewById(R.id.fab);
+        svBuscar = root.findViewById(R.id.buscar);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +81,24 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
             }
         });
 
-        viewJsonData(this::onAmenazaClick);
+        viewJsonData(this::onAmenazaClick,searchOn=false,"");
+
+        svBuscar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Log.i("Submit",s);
+                getQuery(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                Log.i("Change",s);
+                if(s.equals("")){getQuery("change");}
+                return false;
+            }
+        });
+
         return root;
     }
 
@@ -89,7 +109,20 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
         binding = null;
     }
 
-    private void viewJsonData(AmenazaAdapter.AmenazaClickInterface amenazaClickInterface){
+    private void getQuery(String s){
+
+        if(s.equals("change")){
+            viewJsonData(this::onAmenazaClick,searchOn=false,s);
+        }else{
+            viewJsonData(this::onAmenazaClick,searchOn=true,s);
+        }
+
+    }
+
+    private void viewJsonData(AmenazaAdapter.AmenazaClickInterface amenazaClickInterface, boolean searchOn,String s){
+
+
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://controlriesgosusat.pythonanywhere.com")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -105,7 +138,13 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
                 LinearLayoutManager manager;
                 AmenazaAdapter adapter;
                 for (i=0;i<amenazaArrayList.size();i++){
-
+                    if(searchOn){
+                        if(amenazaArrayList.get(i).getDescripcion().equalsIgnoreCase(s)){
+                            Amenaza coincide = amenazaArrayList.get(i);
+                            amenazaArrayList.clear();
+                            amenazaArrayList.add(coincide);
+                        }
+                    }
                     manager = new LinearLayoutManager(getActivity());
                     recyclerView.setLayoutManager(manager);
                     recyclerView.setHasFixedSize(true);
