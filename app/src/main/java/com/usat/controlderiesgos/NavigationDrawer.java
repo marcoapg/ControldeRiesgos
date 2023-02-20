@@ -66,11 +66,18 @@ public class NavigationDrawer extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Log.i("Item",String.valueOf(item.getItemId()));
 
-        Toast.makeText(getApplicationContext(),"Cerrando sesion...",Toast.LENGTH_SHORT).show();
-        mAuth.signOut();
-        Intent i = new Intent(NavigationDrawer.this,MainActivity.class);
-        startActivity(i);
-        this.finish();
+        switch (item.getItemId()){
+            case R.id.cerrarSesion:
+                Toast.makeText(getApplicationContext(),"Cerrando sesion...",Toast.LENGTH_SHORT).show();
+                mAuth.signOut();
+                Intent i = new Intent(NavigationDrawer.this,MainActivity.class);
+                startActivity(i);
+                this.finish();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
