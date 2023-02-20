@@ -5,6 +5,11 @@ public class Vulnerabilidad {
     private int VulnerabilidadID;
     private String Descripcion;
 
+    public Vulnerabilidad(int VulnerabilidadID, String Descripcion) {
+        this.VulnerabilidadID = VulnerabilidadID;
+        this.Descripcion = Descripcion;
+    }
+
     public int getVulnerabilidadID() {
         return VulnerabilidadID;
     }

@@ -62,7 +62,7 @@ public class AmenazaAdapter extends RecyclerView.Adapter<AmenazaAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            amenazaidtxt=itemView.findViewById(R.id.tvAmenazaId);
+            amenazaidtxt=itemView.findViewById(R.id.tvId);
             descripciontxt=itemView.findViewById(R.id.tvDescripcion);
             itemLayout = itemView.findViewById(R.id.itemLl);
         }

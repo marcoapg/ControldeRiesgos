@@ -10,7 +10,7 @@
     android:padding="5sp">
 
     <TextView
-        android:id="@+id/tvAmenazaId"
+        android:id="@+id/tvId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="5sp"
