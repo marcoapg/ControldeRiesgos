@@ -1,4 +1,4 @@
-package com.usat.controlderiesgos.ui.slideshow;
+package com.usat.controlderiesgos.ui.tipoactivo;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,23 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.usat.controlderiesgos.databinding.FragmentSlideshowBinding;
+import com.usat.controlderiesgos.databinding.FragmentTipoactivoBinding;
+import com.usat.controlderiesgos.databinding.FragmentTipoactivoBinding;
 
-public class SlideshowFragment extends Fragment {
+public class TipoActivoFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private FragmentTipoactivoBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SlideshowViewModel slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
+        TipoActivoViewModel tipoActivoViewModel =
+                new ViewModelProvider(this).get(TipoActivoViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentTipoactivoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        tipoActivoViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

@@ -19,7 +19,13 @@
 
     <fragment
         android:id="@+id/nav_tiposactivo"
-        android:name="com.usat.controlderiesgos.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:name="com.usat.controlderiesgos.ui.tipoactivo.TipoActivoFragment"
+        android:label="@string/menu_tipoactivo"
+        tools:layout="@layout/fragment_tipoactivo" />
+
+    <fragment
+        android:id="@+id/nav_vulnerabilidades"
+        android:name="com.usat.controlderiesgos.ui.vulnerabilidad.VulnerabilidadFragment"
+        android:label="@string/menu_vulnerabilidades"
+        tools:layout="@layout/fragment_vulnerabilidad" />
 </navigation>

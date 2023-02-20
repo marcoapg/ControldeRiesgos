@@ -1,16 +1,16 @@
-package com.usat.controlderiesgos.ui.slideshow;
+package com.usat.controlderiesgos.ui.tipoactivo;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class TipoActivoViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public TipoActivoViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("This is TipoActivo fragment");
     }
 
     public LiveData<String> getText() {
