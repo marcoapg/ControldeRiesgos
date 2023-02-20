@@ -27,6 +27,7 @@ import com.usat.controlderiesgos.R;
 import com.usat.controlderiesgos.databinding.FragmentAmenazaBinding;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -146,7 +147,7 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
 
                 for (i=0;i<amenazaArrayList.size();i++){
                     if(searchOn){
-                        if(amenazaArrayList.get(i).getDescripcion().startsWith(s)){
+                        if(amenazaArrayList.get(i).getDescripcion().toLowerCase().startsWith(s.toLowerCase())){
                             Amenaza coincide = amenazaArrayList.get(i);
                             amenazasFiltro.add(coincide);
 //                            amenazaArrayList.clear();
