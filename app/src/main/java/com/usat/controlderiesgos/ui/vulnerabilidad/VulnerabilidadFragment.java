@@ -145,6 +145,8 @@ public class VulnerabilidadFragment extends Fragment implements VulnerabilidadAd
         call.enqueue(new Callback<ArrayList<Vulnerabilidad>>() {
             @Override
             public void onResponse(Call<ArrayList<Vulnerabilidad>> call, Response<ArrayList<Vulnerabilidad>> response) {
+                Log.i("Retrofit",String.valueOf(response.isSuccessful()));
+
                 vulnerabilidadArrayList = response.body();
                 int i=0;
                 LinearLayoutManager manager;
@@ -162,6 +164,8 @@ public class VulnerabilidadFragment extends Fragment implements VulnerabilidadAd
                         }
 
                     }else{
+                        Log.i("List",vulnerabilidadArrayList.get(i).getDescripcion());
+
                         adapter = new VulnerabilidadAdapter(vulnerabilidadArrayList, getActivity(), vulnerabilidadClickInterface);
                         recyclerView.setAdapter(adapter);
 
@@ -175,12 +179,11 @@ public class VulnerabilidadFragment extends Fragment implements VulnerabilidadAd
                     }
                 }
 
-
             }
 
             @Override
             public void onFailure(Call<ArrayList<Vulnerabilidad>> call, Throwable t) {
-
+                Log.i("Retrofit","failure");
             }
         });
 

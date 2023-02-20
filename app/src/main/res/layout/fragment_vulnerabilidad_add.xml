@@ -67,8 +67,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/button_back"
                 android:text="Agregar \n registro"
-                android:textAllCaps="false"
-                />
+                android:textAllCaps="false" />
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

@@ -27,7 +27,6 @@ import com.usat.controlderiesgos.R;
 import com.usat.controlderiesgos.databinding.FragmentAmenazaBinding;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -58,7 +57,7 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
 
 //        final TextView textView = binding.textGallery;
 //        amenazaViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        recyclerView= root.findViewById(R.id.rv);
+        recyclerView= root.findViewById(R.id.rvAmenaza);
         amenazaArrayList= new ArrayList<>();
 
         amenazaAdapter = new AmenazaAdapter(amenazaArrayList, getActivity(), this::onAmenazaClick);
@@ -67,8 +66,8 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
 
         recyclerView.setAdapter(amenazaAdapter);
 
-        addBtn = root.findViewById(R.id.fab);
-        svBuscar = root.findViewById(R.id.buscar);
+        addBtn = root.findViewById(R.id.addAmenaza);
+        svBuscar = root.findViewById(R.id.buscarAmenaza);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override

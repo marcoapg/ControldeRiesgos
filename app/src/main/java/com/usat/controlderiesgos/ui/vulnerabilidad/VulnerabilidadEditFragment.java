@@ -16,11 +16,8 @@ import com.usat.controlderiesgos.Interface.PythonAnywhereApi;
 import com.usat.controlderiesgos.Model.Vulnerabilidad;
 import com.usat.controlderiesgos.Model.DeleteRequest;
 import com.usat.controlderiesgos.Model.ResponsePython;
-import com.usat.controlderiesgos.Model.Vulnerabilidad;
 import com.usat.controlderiesgos.R;
 import com.usat.controlderiesgos.databinding.FragmentVulnerabilidadEditBinding;
-import com.usat.controlderiesgos.ui.vulnerabilidad.VulnerabilidadEditFragment;
-import com.usat.controlderiesgos.ui.vulnerabilidad.VulnerabilidadFragment;
 
 import java.util.ArrayList;
 
@@ -74,7 +71,7 @@ public class VulnerabilidadEditFragment extends Fragment {
         binding = FragmentVulnerabilidadEditBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        Button editVulnerabilidadBtn = root.findViewById(R.id.idBtnVulnerabilidad);
+        Button editVulnerabilidadBtn = root.findViewById(R.id.idBtnEditarVulnerabilidad);
 
         vulnerabilidadIdEdt = root.findViewById(R.id.idEditVulnerabilidadID);
         vulnerabilidadDescEdt = root.findViewById(R.id.idEdtVulnerabilidadDescripcion);
