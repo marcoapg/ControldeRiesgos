@@ -1,12 +1,17 @@
 package com.usat.controlderiesgos;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -14,6 +19,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.usat.controlderiesgos.databinding.ActivityNavigationDrawerBinding;
 
 public class NavigationDrawer extends AppCompatActivity {
@@ -21,10 +27,12 @@ public class NavigationDrawer extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityNavigationDrawerBinding binding;
 
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mAuth = FirebaseAuth.getInstance();
         binding = ActivityNavigationDrawerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -54,6 +62,19 @@ public class NavigationDrawer extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation_drawer, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Log.i("Item",String.valueOf(item.getItemId()));
+
+        Toast.makeText(getApplicationContext(),"Cerrando sesion...",Toast.LENGTH_SHORT).show();
+        mAuth.signOut();
+        Intent i = new Intent(NavigationDrawer.this,MainActivity.class);
+        startActivity(i);
+        this.finish();
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
