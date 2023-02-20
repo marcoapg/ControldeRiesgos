@@ -52,10 +52,7 @@ public interface PythonAnywhereApi {
     @GET("api_obtenertipoactivo/{id}")
     Call<ArrayList<TipoActivo>> obtenerTipoActivoId(@Path("id") String tipoactivoid);
 
-    /*TipoActivo - INICIO*/
-
-    @GET("api_obtenerunidadesorganizacionales")
-    Call<ArrayList<UnidadOrganizacional>> getUnidadesOrganizacionales();
+    /*TipoActivo - FIN*/
 
     /*Vulnerabilidad - INICIO*/
     @GET("api_obtenervulnerabilidades")
@@ -74,5 +71,24 @@ public interface PythonAnywhereApi {
     Call<ArrayList<Vulnerabilidad>> obtenerVulnerabilidadId(@Path("id") String vulnerabilidadid);
 
     /*Vulnerabilidad - FIN*/
+
+    /*UnidadOrganizacional - INICIO*/
+    @GET("api_obtenerunidadesorganizacionales")
+    Call<ArrayList<UnidadOrganizacional>> getUnidadesOrganizacionales();
+
+    @POST("api_eliminarunidadorganizacional")
+    Call<ResponsePython> eliminarUnidadOrganizacional(@Body DeleteRequest deleteRequest);
+
+    @POST("api_actualizarunidadorganizacional")
+    Call<ResponsePython> actualizarUnidadOrganizacional(@Body UnidadOrganizacional unidadorganizacional);
+
+    @POST("api_guardarunidadorganizacional")
+    Call<ResponsePython> guardarUnidadOrganizacional(@Body AddRequest unidadorganizacionalAdd);
+
+    @GET("api_obtenerunidadorganizacional/{id}")
+    Call<ArrayList<UnidadOrganizacional>> obtenerUnidadOrganizacionalId(@Path("id") String unidadorganizacionalid);
+
+    /*UnidadOrganizacional - FIN*/
+
 
 }
