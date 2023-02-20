@@ -88,14 +88,14 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
             public boolean onQueryTextSubmit(String s) {
                 Log.i("Submit",s);
                 getQuery(s);
-                return false;
+                return true;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
                 Log.i("Change",s);
-                if(s.equals("")){getQuery("change");}
-                return false;
+                if(s.length()==0){getQuery("change");}else{getQuery(s);}
+                return true;
             }
         });
 
@@ -113,8 +113,10 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
 
         if(s.equals("change")){
             viewJsonData(this::onAmenazaClick,searchOn=false,s);
+            Log.i("get","false");
         }else{
             viewJsonData(this::onAmenazaClick,searchOn=true,s);
+            Log.i("get","true");
         }
 
     }
@@ -137,19 +139,35 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
                 int i=0;
                 LinearLayoutManager manager;
                 AmenazaAdapter adapter;
+                manager = new LinearLayoutManager(getActivity());
+                recyclerView.setLayoutManager(manager);
+                recyclerView.setHasFixedSize(true);
+                ArrayList<Amenaza> amenazasFiltro= new ArrayList<>();;
+
                 for (i=0;i<amenazaArrayList.size();i++){
                     if(searchOn){
-                        if(amenazaArrayList.get(i).getDescripcion().equalsIgnoreCase(s)){
+                        if(amenazaArrayList.get(i).getDescripcion().startsWith(s)){
                             Amenaza coincide = amenazaArrayList.get(i);
-                            amenazaArrayList.clear();
-                            amenazaArrayList.add(coincide);
+                            amenazasFiltro.add(coincide);
+//                            amenazaArrayList.clear();
+//                            amenazaArrayList.add(coincide);
+
+
                         }
+
+                    }else{
+                        adapter = new AmenazaAdapter(amenazaArrayList,getActivity(),amenazaClickInterface);
+                        recyclerView.setAdapter(adapter);
                     }
-                    manager = new LinearLayoutManager(getActivity());
-                    recyclerView.setLayoutManager(manager);
-                    recyclerView.setHasFixedSize(true);
-                    adapter = new AmenazaAdapter(amenazaArrayList,getActivity(),amenazaClickInterface);
-                    recyclerView.setAdapter(adapter);
+
+
+                }
+
+                if(searchOn){
+                    for (int j=0;j<amenazasFiltro.size();j++){
+                        adapter = new AmenazaAdapter(amenazasFiltro,getActivity(),amenazaClickInterface);
+                        recyclerView.setAdapter(adapter);
+                    }
                 }
             }
 
