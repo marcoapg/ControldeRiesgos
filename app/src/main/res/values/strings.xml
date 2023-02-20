@@ -19,4 +19,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_inicio">Inicio</string>
+    <string name="menu_tiposactivo">Tipos Activo</string>
+    <string name="menu_vulnerabilidad">Vulnerabilidad</string>
+    <string name="menu_activo">Activos</string>
+    <string name="menu_unidadesorganizacionales">Unid. Organizacionales</string>
 </resources>

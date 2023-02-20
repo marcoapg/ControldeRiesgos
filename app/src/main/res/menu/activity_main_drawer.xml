@@ -13,8 +13,21 @@
             android:icon="@drawable/ic_amenaza"
             android:title="@string/menu_amenazas" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_unidadesorganizacionles"
+            android:icon="@drawable/ic_unidadesorganizacionales"
+            android:title="@string/menu_unidadesorganizacionales" />
+        <item
+            android:id="@+id/nav_vulnerabilidades"
+            android:icon="@drawable/ic_vulnerabilidad"
+            android:title="@string/menu_vulnerabilidad" />
+        <item
+            android:id="@+id/nav_tiposactivo"
             android:icon="@drawable/ic_tipoactivo"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/menu_tiposactivo" />
+        <item
+            android:id="@+id/nav_activos"
+            android:icon="@drawable/ic_activo"
+            android:title="@string/menu_activo" />
+
     </group>
 </menu>
