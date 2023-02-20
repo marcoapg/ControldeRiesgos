@@ -1,6 +1,6 @@
 package com.usat.controlderiesgos.Model;
 
-public class AmenazaAdd {
+public class AddRequest {
     private String descripcion;
 
     public void setDescripcion(String descripcion) {

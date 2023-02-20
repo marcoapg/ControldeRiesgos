@@ -13,12 +13,10 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.usat.controlderiesgos.Interface.PythonAnywhereApi;
-import com.usat.controlderiesgos.Model.Amenaza;
-import com.usat.controlderiesgos.Model.AmenazaAdd;
+import com.usat.controlderiesgos.Model.AddRequest;
 import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.R;
 import com.usat.controlderiesgos.databinding.FragmentAmenazaAddBinding;
-import com.usat.controlderiesgos.databinding.FragmentAmenazaEditBinding;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -97,7 +95,7 @@ public class AmenazaAddFragment extends Fragment {
                 .build();
         PythonAnywhereApi pythonAnywhereApi = retrofit.create(PythonAnywhereApi.class);
 
-        AmenazaAdd objAdd = new AmenazaAdd();
+        AddRequest objAdd = new AddRequest();
 
         objAdd.setDescripcion(String.valueOf(amenazaDescEdt.getText()));
 
