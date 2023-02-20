@@ -20,6 +20,7 @@ import retrofit2.http.Query;
 
 public interface PythonAnywhereApi {
 
+    /*Amenaza - INICIO*/
     @GET("api_obteneramenazas")
     Call<ArrayList<Amenaza>> getAmenazas();
 
@@ -35,8 +36,25 @@ public interface PythonAnywhereApi {
     @GET("api_obteneramenaza/{id}")
     Call<ArrayList<Amenaza>> obtenerAmenazaId(@Path("id") String amenazaid);
 
+    /*Amenaza - FIN*/
+
+    /*TipoActivo - INICIO*/
     @GET("api_obtenertiposactivo")
     Call<List<TipoActivo>> getTiposActivos();
+
+    @POST("api_eliminartipoactivo")
+    Call<ResponsePython> eliminarTipoActivo(@Body DeleteRequest deleteRequest);
+
+    @POST("api_actualizartipoactivo")
+    Call<ResponsePython> actualizarTipoActivo(@Body TipoActivo tipoactivo);
+
+    @POST("api_guardaramenaza")
+    Call<ResponsePython> guardarTipoActivo(@Body TipoActivoAdd amenazaAdd);
+
+    @GET("api_obtenertipoactivo/{id}")
+    Call<ArrayList<TipoActivo>> obtenerTipoActivoId(@Path("id") String tipoactivoid);
+
+    /*TipoActivo - INICIO*/
 
     @GET("api_obtenerunidadesorganizacionales")
     Call<List<UnidadOrganizacional>> getUnidadesOrganizacionales();

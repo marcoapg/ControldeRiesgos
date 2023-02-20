@@ -25,8 +25,8 @@ public class TipoActivoFragment extends Fragment {
         binding = FragmentTipoactivoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
-        tipoActivoViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+//        final TextView textView = binding.textSlideshow;
+//        tipoActivoViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
