@@ -205,7 +205,7 @@ public class VulnerabilidadFragment extends Fragment implements VulnerabilidadAd
         TextView vulnerabilidadIdTV = layout.findViewById(R.id.idTVId);
         TextView vulnerabilidadDescripcionTV = layout.findViewById(R.id.idTVDescripcion);
 
-        vulnerabilidadIdTV.setText(String.valueOf(vulnerabilidad.getVulnerabilidadID()));
+        vulnerabilidadIdTV.setText(String.valueOf(vulnerabilidad.getVulnerabilidadid()));
         vulnerabilidadDescripcionTV.setText(vulnerabilidad.getDescripcion());
 
         Button editarBtn = layout.findViewById(R.id.idBtnEditar);
@@ -216,7 +216,7 @@ public class VulnerabilidadFragment extends Fragment implements VulnerabilidadAd
             public void onClick(View view) {
                 bottomSheetTeachersDialog.cancel();
                 Bundle bundle = new Bundle();
-                bundle.putInt("vulnerabilidadid",vulnerabilidad.getVulnerabilidadID());
+                bundle.putInt("vulnerabilidadid",vulnerabilidad.getVulnerabilidadid());
 
                 VulnerabilidadEditFragment fragment2 = new VulnerabilidadEditFragment();
                 fragment2.setArguments(bundle);
@@ -241,7 +241,7 @@ public class VulnerabilidadFragment extends Fragment implements VulnerabilidadAd
 
     private void eliminarRegistro(Vulnerabilidad objVulnerabilidad){
 
-        int idEliminar = objVulnerabilidad.getVulnerabilidadID();
+        int idEliminar = objVulnerabilidad.getVulnerabilidadid();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://controlriesgosusat.pythonanywhere.com")

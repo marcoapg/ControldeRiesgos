@@ -40,7 +40,7 @@ public class VulnerabilidadAdapter extends RecyclerView.Adapter<VulnerabilidadAd
     @Override
     public void onBindViewHolder(@NonNull VulnerabilidadAdapter.ViewHolder holder, int position) {
         Vulnerabilidad vulnerabilidad = vulnerabilidadArrayList.get(position);
-        holder.vulnerabilidadidtxt.setText(String.valueOf(vulnerabilidad.getVulnerabilidadID()));
+        holder.vulnerabilidadidtxt.setText(String.valueOf(vulnerabilidad.getVulnerabilidadid()));
         holder.descripciontxt.setText(vulnerabilidad.getDescripcion());
         holder.itemLayout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -2,6 +2,15 @@ package com.usat.controlderiesgos.Model;
 
 public class Vulnerabilidad {
 
+    private int vulnerabilidadid;
+    private String descripcion;
+
+
+    public Vulnerabilidad(int vulnerabilidadid, String descripcion) {
+        this.vulnerabilidadid = vulnerabilidadid;
+        this.descripcion = descripcion;
+    }
+
     public int getVulnerabilidadid() {
         return vulnerabilidadid;
     }
@@ -18,8 +27,6 @@ public class Vulnerabilidad {
         this.descripcion = descripcion;
     }
 
-    private int vulnerabilidadid;
-    private String descripcion;
 
 
 }
