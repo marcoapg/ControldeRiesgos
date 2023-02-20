@@ -16,4 +16,5 @@ public class AmenazaViewModel extends ViewModel {
     public LiveData<String> getText() {
         return mText;
     }
+
 }

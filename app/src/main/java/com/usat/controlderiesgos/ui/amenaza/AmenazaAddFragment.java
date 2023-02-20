@@ -24,11 +24,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AmenazaAddFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class AmenazaAddFragment extends Fragment {
 
 
@@ -40,15 +36,7 @@ public class AmenazaAddFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AmenazaAddFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static AmenazaAddFragment newInstance(String param1, String param2) {
         AmenazaAddFragment fragment = new AmenazaAddFragment();
         Bundle args = new Bundle();

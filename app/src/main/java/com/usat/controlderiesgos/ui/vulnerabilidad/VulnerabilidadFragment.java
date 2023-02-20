@@ -30,9 +30,6 @@ import com.usat.controlderiesgos.Model.Vulnerabilidad;
 import com.usat.controlderiesgos.R;
 import com.usat.controlderiesgos.databinding.FragmentTipoactivoBinding;
 import com.usat.controlderiesgos.databinding.FragmentVulnerabilidadBinding;
-import com.usat.controlderiesgos.ui.amenaza.AmenazaAdapter;
-import com.usat.controlderiesgos.ui.amenaza.AmenazaEditFragment;
-import com.usat.controlderiesgos.ui.amenaza.AmenazaFragment;
 import com.usat.controlderiesgos.ui.tipoactivo.TipoActivoViewModel;
 
 import java.util.ArrayList;
@@ -88,7 +85,7 @@ public class VulnerabilidadFragment extends Fragment implements VulnerabilidadAd
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                VulnerabilidadFragment fragment = new VulnerabilidadFragment();
+                VulnerabilidadAddFragment fragment = new VulnerabilidadAddFragment();
 
                 getFragmentManager()
                         .beginTransaction()
@@ -138,7 +135,7 @@ public class VulnerabilidadFragment extends Fragment implements VulnerabilidadAd
 
     private void viewJsonData(VulnerabilidadAdapter.VulnerabilidadClickInterface vulnerabilidadClickInterface, boolean searchOn, String s){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://controlriesgousat.pythonanywhere.com")
+                .baseUrl("https://controlriesgosusat.pythonanywhere.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -157,7 +154,7 @@ public class VulnerabilidadFragment extends Fragment implements VulnerabilidadAd
                 recyclerView.setHasFixedSize(true);
                 ArrayList<Vulnerabilidad> vulnerabilidadFiltro = new ArrayList<>();
 
-                for (i=0; i<vulnerabilidadFiltro.size(); i++){
+                for (i=0; i<vulnerabilidadArrayList.size(); i++){
                     if(searchOn){
                         if(vulnerabilidadArrayList.get(i).getDescripcion().toLowerCase().startsWith(s.toLowerCase())){
                             Vulnerabilidad coincide = vulnerabilidadArrayList.get(i);

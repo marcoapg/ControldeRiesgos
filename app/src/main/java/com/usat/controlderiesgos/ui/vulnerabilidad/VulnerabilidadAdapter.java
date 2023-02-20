@@ -22,9 +22,9 @@ public class VulnerabilidadAdapter extends RecyclerView.Adapter<VulnerabilidadAd
     private Context context;
 
 
-    private VulnerabilidadAdapter.VulnerabilidadClickInterface vulnerabilidadClickInterface;
+    private VulnerabilidadClickInterface vulnerabilidadClickInterface;
 
-    public VulnerabilidadAdapter(ArrayList<Vulnerabilidad> vulnerabilidadArrayList, Context context, VulnerabilidadAdapter.VulnerabilidadClickInterface vulnerabilidadClickInterface) {
+    public VulnerabilidadAdapter(ArrayList<Vulnerabilidad> vulnerabilidadArrayList, Context context, VulnerabilidadClickInterface vulnerabilidadClickInterface) {
         this.vulnerabilidadArrayList = vulnerabilidadArrayList;
         this.context = context;
         this.vulnerabilidadClickInterface = vulnerabilidadClickInterface;
@@ -34,7 +34,7 @@ public class VulnerabilidadAdapter extends RecyclerView.Adapter<VulnerabilidadAd
     @Override
     public VulnerabilidadAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.singleview,parent,false);
-        return new VulnerabilidadAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
