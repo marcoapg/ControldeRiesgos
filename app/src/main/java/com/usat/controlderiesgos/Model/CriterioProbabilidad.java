@@ -1,22 +1,22 @@
 package com.usat.controlderiesgos.Model;
 
 public class CriterioProbabilidad {
-    private int criterioprobabilidad;
+    private int criterioprobabilidadid;
     private String descripcion;
     private int valor;
 
-    public CriterioProbabilidad(int criterioprobabilidad, String descripcion, int valor) {
-        this.criterioprobabilidad = criterioprobabilidad;
+    public CriterioProbabilidad(int criterioprobabilidadid, String descripcion, int valor) {
+        this.criterioprobabilidadid = criterioprobabilidadid;
         this.descripcion = descripcion;
         this.valor = valor;
     }
 
-    public int getCriterioprobabilidad() {
-        return criterioprobabilidad;
+    public int getCriterioprobabilidadid() {
+        return criterioprobabilidadid;
     }
 
-    public void setCriterioprobabilidad(int criterioprobabilidad) {
-        this.criterioprobabilidad = criterioprobabilidad;
+    public void setCriterioprobabilidadid(int criterioprobabilidadid) {
+        this.criterioprobabilidadid = criterioprobabilidadid;
     }
 
     public String getDescripcion() {
