@@ -1,22 +1,27 @@
 package com.usat.controlderiesgos.Model;
 
 public class UnidadOrganizacional {
-    private int UnidadOrganizacionalID;
-    private String Descripcion;
+    private int unidadorganizacionalid;
+    private String descripcion;
 
-    public int getUnidadOrganizacionalID() {
-        return UnidadOrganizacionalID;
+    public int getUnidadorganizacionalid() {
+        return unidadorganizacionalid;
     }
 
-    public void setUnidadOrganizacionalID(int unidadOrganizacionalID) {
-        UnidadOrganizacionalID = unidadOrganizacionalID;
+    public void setUnidadorganizacionalid(int unidadorganizacionalid) {
+        this.unidadorganizacionalid = unidadorganizacionalid;
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
-        Descripcion = descripcion;
+        this.descripcion = descripcion;
+    }
+
+    public UnidadOrganizacional(int unidadorganizacionalid, String descripcion) {
+        this.unidadorganizacionalid = unidadorganizacionalid;
+        this.descripcion = descripcion;
     }
 }

@@ -1,23 +1,27 @@
 package com.usat.controlderiesgos.Model;
 
 public class TipoActivo {
-    private int TipoActivoID;
-    private String Descripcion;
+    private int tipoactivoid;
+    private String descripcion;
 
+    public int getTipoactivoid() {
+        return tipoactivoid;
+    }
 
-     public int getTipoActivoID() {
-            return TipoActivoID;
-        }
+    public void setTipoactivoid(int tipoactivoid) {
+        this.tipoactivoid = tipoactivoid;
+    }
 
-        public void setTipoActivoID(int tipoActivoID) {
-            TipoActivoID = tipoActivoID;
-        }
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-        public String getDescripcion() {
-            return Descripcion;
-        }
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-        public void setDescripcion(String descripcion) {
-            Descripcion = descripcion;
-        }
+    public TipoActivo(int tipoactivoid, String descripcion) {
+        this.tipoactivoid = tipoactivoid;
+        this.descripcion = descripcion;
+    }
 }
