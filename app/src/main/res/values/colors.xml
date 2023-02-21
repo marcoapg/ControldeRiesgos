@@ -13,4 +13,7 @@
     <color name="colorSecondary">#D4F0F9</color>
     <color name="colorDark">#757575</color>
     <color name="textColorSecondary">#3b608c</color>
+    <color name="danger">#E96479</color>
+    <color name="warning">#F5E9CF</color>
+    <color name="normal">#BEF0CB</color>
 </resources>

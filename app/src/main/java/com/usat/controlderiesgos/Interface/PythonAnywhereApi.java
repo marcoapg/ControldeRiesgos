@@ -5,6 +5,7 @@ import com.usat.controlderiesgos.Model.Amenaza;
 import com.usat.controlderiesgos.Model.AddRequestOnlyDescription;
 import com.usat.controlderiesgos.Model.CriterioImpacto;
 import com.usat.controlderiesgos.Model.CriterioProbabilidad;
+import com.usat.controlderiesgos.Model.CriterioRiesgo;
 import com.usat.controlderiesgos.Model.DeleteRequest;
 import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.Model.TipoActivo;
@@ -128,6 +129,24 @@ public interface PythonAnywhereApi {
     Call<ArrayList<CriterioProbabilidad>> obtenerCriterioProbabilidadId(@Path("id") String criterioprobabilidadid);
 
     /*CriterioProbabilidad - FIN*/
+
+    /*CriterioRiesgo - INICIO*/
+    @GET("api_obtenercriteriosriesgo")
+    Call<ArrayList<CriterioRiesgo>> getCriteriosRiesgo();
+
+    @POST("api_eliminarcriterioriesgo")
+    Call<ResponsePython> eliminarCriterioRiesgo(@Body DeleteRequest deleteRequest);
+
+    @POST("api_actualizarcriterioriesgo")
+    Call<ResponsePython> actualizarCriterioRiesgo(@Body CriterioRiesgo criterioriesgo);
+
+    @POST("api_guardarcriterioriesgo")
+    Call<ResponsePython> guardarCriterioRiesgo(@Body AddRequestDescriptionValue criterioriesgoAdd);
+
+    @GET("api_obtenercriterioriesgo/{id}")
+    Call<ArrayList<CriterioRiesgo>> obtenerCriterioRiesgoId(@Path("id") String criterioriesgoid);
+
+    /*CriterioRiesgo - FIN*/
 
 
 

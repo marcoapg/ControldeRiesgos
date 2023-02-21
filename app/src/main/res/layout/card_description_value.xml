@@ -45,6 +45,15 @@
             android:textColor="@color/textColorSecondary"
             android:textSize="16sp"
             android:textStyle="italic" />
+
+        <LinearLayout
+            android:id="@+id/layoutCardColor"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10sp"
+            android:background="@drawable/rounded_edge_home"
+            android:orientation="horizontal"
+            android:visibility="gone"></LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
