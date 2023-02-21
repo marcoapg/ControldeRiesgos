@@ -1,7 +1,9 @@
 package com.usat.controlderiesgos.Interface;
 
+import com.usat.controlderiesgos.Model.AddRequestDescriptionValue;
 import com.usat.controlderiesgos.Model.Amenaza;
-import com.usat.controlderiesgos.Model.AddRequest;
+import com.usat.controlderiesgos.Model.AddRequestOnlyDescription;
+import com.usat.controlderiesgos.Model.CriterioImpacto;
 import com.usat.controlderiesgos.Model.DeleteRequest;
 import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.Model.TipoActivo;
@@ -29,7 +31,7 @@ public interface PythonAnywhereApi {
     Call<ResponsePython> actualizarAmenaza(@Body Amenaza amenaza);
 
     @POST("api_guardaramenaza")
-    Call<ResponsePython> guardarAmenaza(@Body AddRequest addRequest);
+    Call<ResponsePython> guardarAmenaza(@Body AddRequestOnlyDescription addRequestOnlyDescription);
 
     @GET("api_obteneramenaza/{id}")
     Call<ArrayList<Amenaza>> obtenerAmenazaId(@Path("id") String amenazaid);
@@ -47,7 +49,7 @@ public interface PythonAnywhereApi {
     Call<ResponsePython> actualizarTipoActivo(@Body TipoActivo tipoactivo);
 
     @POST("api_guardartipoactivo")
-    Call<ResponsePython> guardarTipoActivo(@Body AddRequest tipoactivoAdd);
+    Call<ResponsePython> guardarTipoActivo(@Body AddRequestOnlyDescription tipoactivoAdd);
 
     @GET("api_obtenertipoactivo/{id}")
     Call<ArrayList<TipoActivo>> obtenerTipoActivoId(@Path("id") String tipoactivoid);
@@ -65,7 +67,7 @@ public interface PythonAnywhereApi {
     Call<ResponsePython> actualizarVulnerabilidad(@Body Vulnerabilidad vulnerabilidad);
 
     @POST("api_guardarvulnerabilidad")
-    Call<ResponsePython> guardarVulnerabilidad(@Body AddRequest vulnerabilidadAdd);
+    Call<ResponsePython> guardarVulnerabilidad(@Body AddRequestOnlyDescription vulnerabilidadAdd);
 
     @GET("api_obtenervulnerabilidad/{id}")
     Call<ArrayList<Vulnerabilidad>> obtenerVulnerabilidadId(@Path("id") String vulnerabilidadid);
@@ -83,12 +85,30 @@ public interface PythonAnywhereApi {
     Call<ResponsePython> actualizarUnidadOrganizacional(@Body UnidadOrganizacional unidadorganizacional);
 
     @POST("api_guardarunidadorganizacional")
-    Call<ResponsePython> guardarUnidadOrganizacional(@Body AddRequest unidadorganizacionalAdd);
+    Call<ResponsePython> guardarUnidadOrganizacional(@Body AddRequestOnlyDescription unidadorganizacionalAdd);
 
     @GET("api_obtenerunidadorganizacional/{id}")
     Call<ArrayList<UnidadOrganizacional>> obtenerUnidadOrganizacionalId(@Path("id") String unidadorganizacionalid);
 
     /*UnidadOrganizacional - FIN*/
+
+    /*CriterioImpacto - INICIO*/
+    @GET("api_obtenercriteriosimpacto")
+    Call<ArrayList<CriterioImpacto>> getCriteriosImpacto();
+
+    @POST("api_eliminarcriterioimpacto")
+    Call<ResponsePython> eliminarCriterioImpacto(@Body DeleteRequest deleteRequest);
+
+    @POST("api_actualizarcriterioimpacto")
+    Call<ResponsePython> actualizarCriterioImpacto(@Body CriterioImpacto criterioimpacto);
+
+    @POST("api_guardarcriterioimpacto")
+    Call<ResponsePython> guardarCriterioImpacto(@Body AddRequestDescriptionValue criterioimpactoAdd);
+
+    @GET("api_obtenercriterioimpacto/{id}")
+    Call<ArrayList<CriterioImpacto>> obtenerCriterioImpactoId(@Path("id") String criterioimpactoid);
+
+    /*CriterioImpacto - FIN*/
 
 
 

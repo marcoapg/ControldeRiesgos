@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.usat.controlderiesgos.Interface.PythonAnywhereApi;
-import com.usat.controlderiesgos.Model.AddRequest;
+import com.usat.controlderiesgos.Model.AddRequestOnlyDescription;
 import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.R;
 import com.usat.controlderiesgos.databinding.FragmentUnidadOrganizacionalAddBinding;
@@ -78,7 +78,7 @@ public class UnidadOrganizacionalAddFragment extends Fragment {
                 .build();
         PythonAnywhereApi pythonAnywhereApi = retrofit.create(PythonAnywhereApi.class);
 
-        AddRequest objAdd = new AddRequest();
+        AddRequestOnlyDescription objAdd = new AddRequestOnlyDescription();
 
         objAdd.setDescripcion(String.valueOf(unidadorganizacionalDescEdt.getText()));
 

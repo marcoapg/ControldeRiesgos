@@ -32,7 +32,7 @@ public class AmenazaAdapter extends RecyclerView.Adapter<AmenazaAdapter.ViewHold
     @NonNull
     @Override
     public AmenazaAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.singleview,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_only_description,parent,false);
         return new ViewHolder(view);
     }
 

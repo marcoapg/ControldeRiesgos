@@ -1,6 +1,6 @@
 package com.usat.controlderiesgos.Model;
 
-public class AddRequest {
+public class AddRequestOnlyDescription {
     private String descripcion;
 
     public void setDescripcion(String descripcion) {

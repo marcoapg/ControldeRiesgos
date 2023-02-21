@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.usat.controlderiesgos.Model.Vulnerabilidad;
 import com.usat.controlderiesgos.R;
-import com.usat.controlderiesgos.ui.amenaza.AmenazaAdapter;
 
 import java.util.ArrayList;
 
@@ -33,7 +32,7 @@ public class VulnerabilidadAdapter extends RecyclerView.Adapter<VulnerabilidadAd
     @NonNull
     @Override
     public VulnerabilidadAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.singleview,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_only_description,parent,false);
         return new ViewHolder(view);
     }
 

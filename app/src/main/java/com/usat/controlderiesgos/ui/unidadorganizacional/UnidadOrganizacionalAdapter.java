@@ -32,7 +32,7 @@ public class UnidadOrganizacionalAdapter extends RecyclerView.Adapter<com.usat.c
     @NonNull
     @Override
     public com.usat.controlderiesgos.ui.unidadorganizacional.UnidadOrganizacionalAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.singleview,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_only_description,parent,false);
         return new com.usat.controlderiesgos.ui.unidadorganizacional.UnidadOrganizacionalAdapter.ViewHolder(view);
     }
 
