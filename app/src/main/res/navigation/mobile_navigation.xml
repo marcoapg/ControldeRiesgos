@@ -11,6 +11,7 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
+    <!--Identificacion-->
     <fragment
         android:id="@+id/nav_amenazas"
         android:name="com.usat.controlderiesgos.ui.amenaza.AmenazaFragment"
@@ -28,4 +29,57 @@
         android:name="com.usat.controlderiesgos.ui.vulnerabilidad.VulnerabilidadFragment"
         android:label="@string/menu_vulnerabilidades"
         tools:layout="@layout/fragment_vulnerabilidad" />
+
+    <fragment
+        android:id="@+id/nav_unidadesorganizacionles"
+        android:name="com.usat.controlderiesgos.ui.unidadorganizacional.UnidadOrganizacionalFragment"
+        android:label="@string/menu_unidadesorganizacionales"
+        tools:layout="@layout/fragment_unidad_organizacional" />
+
+    <fragment
+        android:id="@+id/nav_riesgos"
+        android:name="com.usat.controlderiesgos.ui.riesgo.RiesgoFragment"
+        android:label="@string/menu_riesgos"
+        tools:layout="@layout/fragment_riesgo" />
+
+    <fragment
+        android:id="@+id/nav_activos"
+        android:name="com.usat.controlderiesgos.ui.activo.ActivoFragment"
+        android:label="@string/menu_activos"
+        tools:layout="@layout/fragment_activo" />
+
+    <!--Analisis-->
+    <fragment
+        android:id="@+id/nav_causas"
+        android:name="com.usat.controlderiesgos.ui.causa.CausaFragment"
+        android:label="@string/menu_causas"
+        tools:layout="@layout/fragment_causa" />
+
+    <!--Evaluacion-->
+
+    <fragment
+        android:id="@+id/nav_criteriosimpacto"
+        android:name="com.usat.controlderiesgos.ui.criterioimpacto.CriterioImpactoFragment"
+        android:label="@string/menu_criteriosimpacto"
+        tools:layout="@layout/fragment_criterio_impacto" />
+
+    <fragment
+        android:id="@+id/nav_criteriosprobabilidad"
+        android:name="com.usat.controlderiesgos.ui.criterioprobabilidad.CriterioProbabilidadFragment"
+        android:label="@string/menu_criteriosprobabilidad"
+        tools:layout="@layout/fragment_criterio_probabilidad" />
+
+    <fragment
+        android:id="@+id/nav_criteriosriesgo"
+        android:name="com.usat.controlderiesgos.ui.criterioriesgo.CriterioRiesgoFragment"
+        android:label="@string/menu_criteriosriesgo"
+        tools:layout="@layout/fragment_criterio_riesgo" />
+
+    <fragment
+        android:id="@+id/nav_registrosimpacto"
+        android:name="com.usat.controlderiesgos.ui.registroimpactoprobabilidad.RegistroImpactoProbabilidadFragment"
+        android:label="@string/menu_registrosimpprob"
+        tools:layout="@layout/fragment_registro_impacto_probabilidad" />
+
+
 </navigation>

@@ -24,4 +24,9 @@
     <string name="menu_activo">Activos</string>
     <string name="menu_unidadesorganizacionales">Unid. Organizacionales</string>
     <string name="menu_causas">Causas</string>
+    <string name="menu_criteriosimpacto">Criterios Impacto</string>
+    <string name="menu_criteriosprobabilidad">Criterios Probabilidad</string>
+    <string name="menu_criteriosriesgo">Criterios Riesgo</string>
+    <string name="menu_registrosimpprob">Registros Imp./Prob.</string>
+    <string name="menu_reportesriesgo">Reportes Riesgo</string>
 </resources>

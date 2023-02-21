@@ -61,6 +61,10 @@
                     android:id="@+id/nav_amenazas"
                     android:icon="@drawable/ic_amenaza"
                     android:title="@string/menu_amenazas" />
+                <item
+                    android:id="@+id/nav_riesgos"
+                    android:icon="@drawable/ic_riesgo"
+                    android:title="@string/menu_riesgos" />
             </menu>
         </item>
     </group>
@@ -80,23 +84,23 @@
                 <item
                     android:id="@+id/nav_criteriosimpacto"
                     android:icon="@drawable/ic_activo"
-                    android:title="Criterios Impacto" />
+                    android:title="@string/menu_criteriosimpacto" />
                 <item
                     android:id="@+id/nav_criteriosprobabilidad"
                     android:icon="@drawable/ic_tipoactivo"
-                    android:title="Criterios Probabilidad" />
+                    android:title="@string/menu_criteriosprobabilidad" />
                 <item
                     android:id="@+id/nav_criteriosriesgo"
                     android:icon="@drawable/ic_amenaza"
-                    android:title="Criterios Riesgo" />
+                    android:title="@string/menu_criteriosriesgo" />
                 <item
                     android:id="@+id/nav_registrosimpacto"
                     android:icon="@drawable/ic_unidadesorganizacionales"
-                    android:title="Registros Imp./Prob." />
+                    android:title="@string/menu_registrosimpprob" />
                 <item
                     android:id="@+id/nav_reportesriesgo"
                     android:icon="@drawable/ic_vulnerabilidad"
-                    android:title="Reportes Riesgo" />
+                    android:title="@string/menu_reportesriesgo" />
             </menu>
 
         </item>
