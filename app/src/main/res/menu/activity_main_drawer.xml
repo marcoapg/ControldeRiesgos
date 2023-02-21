@@ -3,31 +3,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <!--    <group android:checkableBehavior="single">-->
+    <!--        <item-->
+    <!--            android:id="@+id/nav_home"-->
+    <!--            android:icon="@drawable/ic_home"-->
+    <!--            android:title="@string/menu_inicio" />-->
+    <!--        <item-->
+    <!--            android:id="@+id/nav_amenazas"-->
+    <!--            android:icon="@drawable/ic_amenaza"-->
+    <!--            android:title="@string/menu_amenazas" />-->
+    <!--        <item-->
+    <!--            android:id="@+id/nav_unidadesorganizacionles"-->
+    <!--            android:icon="@drawable/ic_unidadesorganizacionales"-->
+    <!--            android:title="@string/menu_unidadesorganizacionales" />-->
+    <!--        <item-->
+    <!--            android:id="@+id/nav_vulnerabilidades"-->
+    <!--            android:icon="@drawable/ic_vulnerabilidad"-->
+    <!--            android:title="@string/menu_vulnerabilidad" />-->
+    <!--        <item-->
+    <!--            android:id="@+id/nav_tiposactivo"-->
+    <!--            android:icon="@drawable/ic_tipoactivo"-->
+    <!--            android:title="@string/menu_tiposactivo" />-->
+    <!--        <item-->
+    <!--            android:id="@+id/nav_activos"-->
+    <!--            android:icon="@drawable/ic_activo"-->
+    <!--            android:title="@string/menu_activo" />-->
+
+    <!--    </group>-->
+
+    <group>
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
             android:title="@string/menu_inicio" />
-        <item
-            android:id="@+id/nav_amenazas"
-            android:icon="@drawable/ic_amenaza"
-            android:title="@string/menu_amenazas" />
-        <item
-            android:id="@+id/nav_unidadesorganizacionles"
-            android:icon="@drawable/ic_unidadesorganizacionales"
-            android:title="@string/menu_unidadesorganizacionales" />
-        <item
-            android:id="@+id/nav_vulnerabilidades"
-            android:icon="@drawable/ic_vulnerabilidad"
-            android:title="@string/menu_vulnerabilidad" />
-        <item
-            android:id="@+id/nav_tiposactivo"
-            android:icon="@drawable/ic_tipoactivo"
-            android:title="@string/menu_tiposactivo" />
-        <item
-            android:id="@+id/nav_activos"
-            android:icon="@drawable/ic_activo"
-            android:title="@string/menu_activo" />
+    </group>
+    <group>
+        <item android:title="Identificacion">
+            <menu>
+                <item
+                    android:id="@+id/nav_unidadesorganizacionles"
+                    android:icon="@drawable/ic_unidadesorganizacionales"
+                    android:title="@string/menu_unidadesorganizacionales" />
+                <item
+                    android:id="@+id/nav_tiposactivo"
+                    android:icon="@drawable/ic_tipoactivo"
+                    android:title="@string/menu_tiposactivo" />
+                <item
+                    android:id="@+id/nav_activos"
+                    android:icon="@drawable/ic_activo"
+                    android:title="@string/menu_activo" />
 
+                <item
+                    android:id="@+id/nav_vulnerabilidades"
+                    android:icon="@drawable/ic_vulnerabilidad"
+                    android:title="@string/menu_vulnerabilidades" />
+                <item
+                    android:id="@+id/nav_amenazas"
+                    android:icon="@drawable/ic_amenaza"
+                    android:title="@string/menu_amenazas" />
+            </menu>
+        </item>
+    </group>
+    <group>
+        <item android:title="Analisis">
+            <menu>
+                <item
+                    android:id="@+id/nav_causas"
+                    android:icon="@drawable/ic_activo"
+                    android:title="@string/menu_causas" />
+            </menu>
+        </item>
+    </group>
+    <group>
+        <item android:title="Evaluacion">
+            <menu>
+                <item
+                    android:id="@+id/nav_criteriosimpacto"
+                    android:icon="@drawable/ic_activo"
+                    android:title="Criterios Impacto" />
+                <item
+                    android:id="@+id/nav_criteriosprobabilidad"
+                    android:icon="@drawable/ic_tipoactivo"
+                    android:title="Criterios Probabilidad" />
+                <item
+                    android:id="@+id/nav_criteriosriesgo"
+                    android:icon="@drawable/ic_amenaza"
+                    android:title="Criterios Riesgo" />
+                <item
+                    android:id="@+id/nav_registrosimpacto"
+                    android:icon="@drawable/ic_unidadesorganizacionales"
+                    android:title="Registros Imp./Prob." />
+                <item
+                    android:id="@+id/nav_reportesriesgo"
+                    android:icon="@drawable/ic_vulnerabilidad"
+                    android:title="Reportes Riesgo" />
+            </menu>
+
+        </item>
     </group>
 </menu>

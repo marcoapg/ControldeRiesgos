@@ -23,4 +23,5 @@
     <string name="menu_vulnerabilidad">Vulnerabilidad</string>
     <string name="menu_activo">Activos</string>
     <string name="menu_unidadesorganizacionales">Unid. Organizacionales</string>
+    <string name="menu_causas">Causas</string>
 </resources>
