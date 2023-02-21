@@ -45,6 +45,7 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
 
     private boolean searchOn;
     private RelativeLayout homeRL;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         AmenazaViewModel amenazaViewModel =
@@ -57,8 +58,8 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
 
 //        final TextView textView = binding.textGallery;
 //        amenazaViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        recyclerView= root.findViewById(R.id.rvAmenaza);
-        amenazaArrayList= new ArrayList<>();
+        recyclerView = root.findViewById(R.id.rvAmenaza);
+        amenazaArrayList = new ArrayList<>();
 
         amenazaAdapter = new AmenazaAdapter(amenazaArrayList, getActivity(), this::onAmenazaClick);
 
@@ -81,20 +82,24 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
             }
         });
 
-        viewJsonData(this::onAmenazaClick,searchOn=false,"");
+        viewJsonData(this::onAmenazaClick, searchOn = false, "");
 
         svBuscar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                Log.i("Submit",s);
+                Log.i("Submit", s);
                 getQuery(s);
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                Log.i("Change",s);
-                if(s.length()==0){getQuery("change");}else{getQuery(s);}
+                Log.i("Change", s);
+                if (s.length() == 0) {
+                    getQuery("change");
+                } else {
+                    getQuery(s);
+                }
                 return true;
             }
         });
@@ -109,20 +114,19 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
         binding = null;
     }
 
-    private void getQuery(String s){
+    private void getQuery(String s) {
 
-        if(s.equals("change")){
-            viewJsonData(this::onAmenazaClick,searchOn=false,s);
-            Log.i("get","false");
-        }else{
-            viewJsonData(this::onAmenazaClick,searchOn=true,s);
-            Log.i("get","true");
+        if (s.equals("change")) {
+            viewJsonData(this::onAmenazaClick, searchOn = false, s);
+            Log.i("get", "false");
+        } else {
+            viewJsonData(this::onAmenazaClick, searchOn = true, s);
+            Log.i("get", "true");
         }
 
     }
 
-    private void viewJsonData(AmenazaAdapter.AmenazaClickInterface amenazaClickInterface, boolean searchOn,String s){
-
+    private void viewJsonData(AmenazaAdapter.AmenazaClickInterface amenazaClickInterface, boolean searchOn, String s) {
 
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -135,18 +139,19 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
         call.enqueue(new Callback<ArrayList<Amenaza>>() {
             @Override
             public void onResponse(Call<ArrayList<Amenaza>> call, Response<ArrayList<Amenaza>> response) {
-                amenazaArrayList=response.body();
-                int i=0;
+                amenazaArrayList = response.body();
+                int i = 0;
                 LinearLayoutManager manager;
                 AmenazaAdapter adapter;
                 manager = new LinearLayoutManager(getActivity());
                 recyclerView.setLayoutManager(manager);
                 recyclerView.setHasFixedSize(true);
-                ArrayList<Amenaza> amenazasFiltro= new ArrayList<>();;
+                ArrayList<Amenaza> amenazasFiltro = new ArrayList<>();
+                ;
 
-                for (i=0;i<amenazaArrayList.size();i++){
-                    if(searchOn){
-                        if(amenazaArrayList.get(i).getDescripcion().toLowerCase().startsWith(s.toLowerCase())){
+                for (i = 0; i < amenazaArrayList.size(); i++) {
+                    if (searchOn) {
+                        if (amenazaArrayList.get(i).getDescripcion().toLowerCase().startsWith(s.toLowerCase())) {
                             Amenaza coincide = amenazaArrayList.get(i);
                             amenazasFiltro.add(coincide);
 //                            amenazaArrayList.clear();
@@ -155,17 +160,17 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
 
                         }
 
-                    }else{
-                        adapter = new AmenazaAdapter(amenazaArrayList,getActivity(),amenazaClickInterface);
+                    } else {
+                        adapter = new AmenazaAdapter(amenazaArrayList, getActivity(), amenazaClickInterface);
                         recyclerView.setAdapter(adapter);
                     }
 
 
                 }
 
-                if(searchOn){
-                    for (int j=0;j<amenazasFiltro.size();j++){
-                        adapter = new AmenazaAdapter(amenazasFiltro,getActivity(),amenazaClickInterface);
+                if (searchOn) {
+                    for (int j = 0; j < amenazasFiltro.size(); j++) {
+                        adapter = new AmenazaAdapter(amenazasFiltro, getActivity(), amenazaClickInterface);
                         recyclerView.setAdapter(adapter);
                     }
                 }
@@ -178,7 +183,7 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
         });
     }
 
-    private void displayBottomSheet(Amenaza amenaza){
+    private void displayBottomSheet(Amenaza amenaza) {
 
         final BottomSheetDialog bottomSheetTeachersDialog = new BottomSheetDialog(getActivity(), R.style.BottomSheetDialogTheme);
 
@@ -205,7 +210,7 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
             public void onClick(View view) {
                 bottomSheetTeachersDialog.cancel();
                 Bundle bundle = new Bundle();
-                bundle.putInt("amenazaid",amenaza.getAmenazaid());
+                bundle.putInt("amenazaid", amenaza.getAmenazaid());
 
                 AmenazaEditFragment fragment2 = new AmenazaEditFragment();
                 fragment2.setArguments(bundle);
@@ -228,7 +233,7 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
 
     }
 
-    private void eliminarRegistro(Amenaza objAmenaza){
+    private void eliminarRegistro(Amenaza objAmenaza) {
 
         int idEliminar = objAmenaza.getAmenazaid();
 
@@ -249,7 +254,7 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
             @Override
             public void onResponse(Call<ResponsePython> call, Response<ResponsePython> response) {
                 ResponsePython obj = response.body();
-                Toast.makeText(getActivity(),obj.getMensaje(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), obj.getMensaje(), Toast.LENGTH_SHORT).show();
                 AmenazaFragment fragment2 = new AmenazaFragment();
 
                 getFragmentManager()
@@ -260,14 +265,14 @@ public class AmenazaFragment extends Fragment implements AmenazaAdapter.AmenazaC
 
             @Override
             public void onFailure(Call<ResponsePython> call, Throwable t) {
-                Toast.makeText(getActivity(),t.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
 
     }
 
-    public void onAmenazaClick(int position){
+    public void onAmenazaClick(int position) {
         displayBottomSheet(amenazaArrayList.get(position));
     }
 
