@@ -4,6 +4,7 @@ public class Riesgo {
     private int riesgoid;
     private String descripcion;
     private int activoid;
+
     private int vulnerabilidadid;
     private int amenazaid;
 
