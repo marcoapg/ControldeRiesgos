@@ -3,6 +3,8 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        /*COLOR PICKER*/
+        jcenter()
     }
 }
 dependencyResolutionManagement {
@@ -10,6 +12,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        /*COLOR PICKER*/
+        jcenter()
     }
 }
 rootProject.name = "Control de Riesgos"

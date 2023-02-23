@@ -1,6 +1,7 @@
 package com.usat.controlderiesgos.Interface;
 
 import com.usat.controlderiesgos.Model.AddRequestDescriptionValue;
+import com.usat.controlderiesgos.Model.AddRequestDescriptionValueColor;
 import com.usat.controlderiesgos.Model.Amenaza;
 import com.usat.controlderiesgos.Model.AddRequestOnlyDescription;
 import com.usat.controlderiesgos.Model.CriterioImpacto;
@@ -141,7 +142,7 @@ public interface PythonAnywhereApi {
     Call<ResponsePython> actualizarCriterioRiesgo(@Body CriterioRiesgo criterioriesgo);
 
     @POST("api_guardarcriterioriesgo")
-    Call<ResponsePython> guardarCriterioRiesgo(@Body AddRequestDescriptionValue criterioriesgoAdd);
+    Call<ResponsePython> guardarCriterioRiesgo(@Body AddRequestDescriptionValueColor criterioriesgoAdd);
 
     @GET("api_obtenercriterioriesgo/{id}")
     Call<ArrayList<CriterioRiesgo>> obtenerCriterioRiesgoId(@Path("id") String criterioriesgoid);

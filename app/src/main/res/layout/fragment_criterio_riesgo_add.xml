@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.criterioriesgo.CriterioRiesgoAddFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="Agregar Criterio Riesgo">
+
+        </TextView>
+
+        <!--edit text for adding a course price-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/idTILCriterioRiesgoDescripcion"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Descripción"
+            android:padding="5dp"
+            android:textColorHint="@color/black"
+            app:boxStrokeColor="@color/purple_200"
+            app:hintTextColor="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idEdtCriterioRiesgoDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="14sp"
+                app:boxStrokeColor="@color/purple_200" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/idTILCriterioRiesgoValor"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Valor"
+            android:padding="5dp"
+            android:textColorHint="@color/black"
+            app:boxStrokeColor="@color/purple_200"
+            app:hintTextColor="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idEdtCriterioRiesgoValor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="14sp"
+                app:boxStrokeColor="@color/purple_200" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/idTILCriterioRiesgoColor"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Color"
+            android:padding="5dp"
+            android:textColorHint="@color/black"
+            app:boxStrokeColor="@color/purple_200"
+            app:hintTextColor="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idEdtCriterioRiesgoColor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="14sp"
+                app:boxStrokeColor="@color/purple_200" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:gravity="end">
+
+            <!--button for updating a new course-->
+            <Button
+                android:id="@+id/idBtnAgregarCriterioRiesgo"
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_back"
+                android:text="Agregar \n registro"
+                android:textAllCaps="false"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

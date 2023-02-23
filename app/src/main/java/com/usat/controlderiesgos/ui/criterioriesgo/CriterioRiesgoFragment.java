@@ -79,12 +79,12 @@ public class CriterioRiesgoFragment extends Fragment {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                CriterioRiesgoAddFragment fragment2 = new CriterioRiesgoAddFragment();
-//
-//                getFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.nav_host_fragment_content_navigation_drawer, fragment2)
-//                        .commit();
+                CriterioRiesgoAddFragment fragment2 = new CriterioRiesgoAddFragment();
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment_content_navigation_drawer, fragment2)
+                        .commit();
             }
         });
 
@@ -224,13 +224,13 @@ public class CriterioRiesgoFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("criterioriesgoid", criterioriesgo.getCriterioriesgoid());
 
-//                CriterioRiesgoEditFragment fragment2 = new CriterioRiesgoEditFragment();
-//                fragment2.setArguments(bundle);
-//
-//                getFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.nav_host_fragment_content_navigation_drawer, fragment2)
-//                        .commit();
+                CriterioRiesgoEditFragment fragment2 = new CriterioRiesgoEditFragment();
+                fragment2.setArguments(bundle);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment_content_navigation_drawer, fragment2)
+                        .commit();
             }
         });
 
