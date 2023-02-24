@@ -12,6 +12,7 @@ import com.usat.controlderiesgos.Model.DeleteRequest;
 import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.Model.Riesgo;
 import com.usat.controlderiesgos.Model.RiesgoGET;
+import com.usat.controlderiesgos.Model.RiesgoGETID;
 import com.usat.controlderiesgos.Model.TipoActivo;
 import com.usat.controlderiesgos.Model.UnidadOrganizacional;
 import com.usat.controlderiesgos.Model.Vulnerabilidad;
@@ -154,7 +155,7 @@ public interface PythonAnywhereApi {
 
     /*Riesgo - Inicio*/
 
-    @GET("api_obtenerriesgo")
+    @GET("api_obtenerriesgos")
     Call<ArrayList<RiesgoGET>> getRiesgos();
 
     @POST("api_eliminarriesgo")
@@ -167,7 +168,7 @@ public interface PythonAnywhereApi {
     Call<ResponsePython> guardarRiesgo(@Body AddRiesgo riesgoAdd);
 
     @GET("api_obtenerriesgo/{id}")
-    Call<ArrayList<Riesgo>> obtenerRiesgoId(@Path("id") String riesgoid);
+    Call<ArrayList<RiesgoGETID>> obtenerRiesgoId(@Path("id") String riesgoid);
 
 
     /*Riesgo - Fin*/

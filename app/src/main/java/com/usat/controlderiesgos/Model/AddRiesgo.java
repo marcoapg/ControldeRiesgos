@@ -7,12 +7,6 @@ public class AddRiesgo {
     private int vulnerabilidadid;
     private int amenazaid;
 
-    public AddRiesgo(String descripcion, int activoid, int vulnerabilidadid, int amenazaid) {
-        this.descripcion = descripcion;
-        this.activoid = activoid;
-        this.vulnerabilidadid = vulnerabilidadid;
-        this.amenazaid = amenazaid;
-    }
 
     public String getDescripcion() {
         return descripcion;

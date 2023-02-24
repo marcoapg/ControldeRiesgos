@@ -8,6 +8,8 @@
 
     <!--text view for displaying course description-->
 
+
+
     <TextView
         android:id="@+id/idTVId"
         android:layout_width="match_parent"
@@ -26,7 +28,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/idTVId"
-        android:layout_margin="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
         android:padding="3dp"
         android:text="Descripción:"
         android:textColor="@color/white" />
@@ -58,12 +63,56 @@
         android:orientation="horizontal"
         android:visibility="gone"></LinearLayout>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/idTVAmenaza"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/layoutCardColor"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:padding="3dp"
+        android:text="Amenaza:"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/idTVActivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVAmenaza"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:padding="3dp"
+        android:text="Activo:"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/idTVVulnerabilidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVActivo"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:padding="3dp"
+        android:text="Vulnerabilidad:"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVVulnerabilidad"
         android:orientation="horizontal"
         android:weightSum="2">
+
+
 
         <!--button for editing course-->
         <Button
