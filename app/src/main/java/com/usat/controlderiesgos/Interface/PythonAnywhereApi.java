@@ -5,6 +5,8 @@ import com.usat.controlderiesgos.Model.AddRequestDescriptionValueColor;
 import com.usat.controlderiesgos.Model.AddRiesgo;
 import com.usat.controlderiesgos.Model.Amenaza;
 import com.usat.controlderiesgos.Model.AddRequestOnlyDescription;
+import com.usat.controlderiesgos.Model.AuthRequest;
+import com.usat.controlderiesgos.Model.AuthResponse;
 import com.usat.controlderiesgos.Model.CriterioImpacto;
 import com.usat.controlderiesgos.Model.CriterioProbabilidad;
 import com.usat.controlderiesgos.Model.CriterioRiesgo;
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -158,6 +161,9 @@ public interface PythonAnywhereApi {
     @GET("api_obtenerriesgos")
     Call<ArrayList<RiesgoGET>> getRiesgos();
 
+    @GET("api_obtenerriesgos")
+    Call<ArrayList<RiesgoGET>> getRiesgosToken(@Header ("Authorization") String token);
+
     @POST("api_eliminarriesgo")
     Call<ResponsePython> eliminarRiesgo(@Body DeleteRequest deleteRequest);
 
@@ -170,6 +176,13 @@ public interface PythonAnywhereApi {
     @GET("api_obtenerriesgo/{id}")
     Call<ArrayList<RiesgoGETID>> obtenerRiesgoId(@Path("id") String riesgoid);
 
+    @POST("api_usuariologin")
+    Call<ResponsePython> pasarUsuario(@Body AuthRequest uid);
 
     /*Riesgo - Fin*/
+
+    /*JWT*/
+    @POST("auth")
+    Call<AuthResponse> obtenerToken(@Body AuthRequest authRequest);
+
 }

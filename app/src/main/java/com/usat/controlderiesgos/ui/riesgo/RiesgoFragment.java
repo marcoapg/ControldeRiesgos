@@ -22,7 +22,10 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.usat.controlderiesgos.Interface.PythonAnywhereApi;
+import com.usat.controlderiesgos.Model.AuthRequest;
+import com.usat.controlderiesgos.Model.AuthResponse;
 import com.usat.controlderiesgos.Model.Riesgo;
 import com.usat.controlderiesgos.Model.DeleteRequest;
 import com.usat.controlderiesgos.Model.ResponsePython;
@@ -58,11 +61,22 @@ public class RiesgoFragment extends Fragment implements RiesgoAdapter.RiesgoClic
     private FloatingActionButton addBtn;
     private SearchView svBuscar;
 
+    private String token;
+
+    FirebaseAuth mAuth;
+
     private boolean searchOn;
     private RelativeLayout homeRL;
 
     public static RiesgoFragment newInstance() {
         return new RiesgoFragment();
+    }
+
+    @Override
+    public void onStart() {
+        obtenerJWT(mAuth.getCurrentUser().getEmail(),mAuth.getUid());
+
+        super.onStart();
     }
 
     @Override
@@ -74,6 +88,7 @@ public class RiesgoFragment extends Fragment implements RiesgoAdapter.RiesgoClic
 
         binding = FragmentRiesgoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
 
         homeRL = root.findViewById(R.id.idBSL);
 
@@ -90,6 +105,8 @@ public class RiesgoFragment extends Fragment implements RiesgoAdapter.RiesgoClic
 
         addBtn = root.findViewById(R.id.addRiesgo);
         svBuscar = root.findViewById(R.id.buscarRiesgo);
+        mAuth = FirebaseAuth.getInstance();
+
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +120,10 @@ public class RiesgoFragment extends Fragment implements RiesgoAdapter.RiesgoClic
             }
         });
 
+
         viewJsonData(this::onRiesgoClick, searchOn = false, "");
+
+
 
         svBuscar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -125,8 +145,49 @@ public class RiesgoFragment extends Fragment implements RiesgoAdapter.RiesgoClic
             }
         });
 
+
+
         return root;        
         
+    }
+
+
+
+    private void obtenerJWT(String email,String uid){
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://controlriesgosusat.pythonanywhere.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        PythonAnywhereApi pythonAnywhereApi = retrofit.create(PythonAnywhereApi.class);
+
+        AuthRequest objAuth = new AuthRequest();
+        objAuth.setUsername(email);
+        objAuth.setPassword(uid);
+
+        Call<AuthResponse> call = pythonAnywhereApi.obtenerToken(objAuth);
+
+        call.enqueue(new Callback<AuthResponse>() {
+            @Override
+            public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
+                if(response.isSuccessful()){
+                    AuthResponse obj = response.body();
+
+                    Log.i("Success: ",obj.getAccess_token());
+                    token=obj.getAccess_token();
+
+                }else{
+                    Log.i("No Success", String.valueOf(response.code()));
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<AuthResponse> call, Throwable t) {
+                Log.i("Failure",t.getMessage());
+            }
+        });
     }
 
     @Override
@@ -156,7 +217,7 @@ public class RiesgoFragment extends Fragment implements RiesgoAdapter.RiesgoClic
                 .build();
 
         PythonAnywhereApi pythonAnywhereApi = retrofit.create(PythonAnywhereApi.class);
-        Call<ArrayList<RiesgoGET>> call = pythonAnywhereApi.getRiesgos();
+        Call<ArrayList<RiesgoGET>> call = pythonAnywhereApi.getRiesgosToken("JWT "+token);
         call.enqueue(new Callback<ArrayList<RiesgoGET>>() {
             @Override
             public void onResponse(Call<ArrayList<RiesgoGET>> call, Response<ArrayList<RiesgoGET>> response) {

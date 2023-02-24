@@ -1,5 +1,6 @@
 package com.usat.controlderiesgos;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -33,7 +35,12 @@ public class NavigationDrawer extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         binding = ActivityNavigationDrawerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        if(mAuth.getUid().length()==0){
+            Toast.makeText(NavigationDrawer.this,"No se encontro su crendencial, inicie sesion", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(NavigationDrawer.this, MainActivity.class);
+            startActivity(i);
 
+        }
         setSupportActionBar(binding.appBarNavigationDrawer.toolbar);
 //        binding.appBarNavigationDrawer.fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -53,6 +60,43 @@ public class NavigationDrawer extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_drawer);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Cerrar Sesion");
+        builder.setMessage("¿Desea cerrar sesion?");
+
+        builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                // Do nothing but close the dialog
+                dialog.dismiss();
+                mAuth.signOut();
+                Intent i = new Intent(NavigationDrawer.this,MainActivity.class);
+                startActivity(i);
+
+
+            }
+        });
+
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                // Do nothing
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+
+
     }
 
     @Override

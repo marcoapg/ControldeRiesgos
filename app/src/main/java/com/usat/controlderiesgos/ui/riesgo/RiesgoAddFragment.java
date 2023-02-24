@@ -67,7 +67,14 @@ public class RiesgoAddFragment extends Fragment {
         addRiesgoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                guardarRiesgo();
+
+                if(riesgoDescEdt.getText().length()>0 && riesgoVulnerabilidadEdt.getText().length()>0&&riesgoAmenazaEdt.getText().length()>0&&riesgoActivoEdt.getText().length()>0){
+                    guardarRiesgo();
+                }else{
+                    Toast.makeText(getActivity(),"Todos los campos deben estar completos",Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 

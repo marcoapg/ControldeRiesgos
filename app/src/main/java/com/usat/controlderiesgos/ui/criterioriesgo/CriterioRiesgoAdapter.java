@@ -1,7 +1,10 @@
 package com.usat.controlderiesgos.ui.criterioriesgo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,9 +46,17 @@ public class CriterioRiesgoAdapter extends RecyclerView.Adapter<CriterioRiesgoAd
 
         holder.colorlay.setVisibility(View.VISIBLE);
 
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+//        //if you need three fix imageview in width
+        int devicewidth = displaymetrics.widthPixels -330;
+
+        //if you need 4-5-6 anything fix imageview in height
+        holder.infoLayout.getLayoutParams().width=devicewidth;
+
         holder.criterioriesgoidtxt.setText(String.valueOf(criterioriesgo.getCriterioriesgoid()));
         holder.descripciontxt.setText(criterioriesgo.getDescripcion());
-        holder.valortxt.setText("Valor: "+String.valueOf(criterioriesgo.getValor()));
+        holder.valortxt.setText("Valor: "+ criterioriesgo.getValor());
         int color = 0xFFFFFFFF;
 
         if(criterioriesgo.getColor().startsWith("#")){
@@ -73,7 +84,7 @@ public class CriterioRiesgoAdapter extends RecyclerView.Adapter<CriterioRiesgoAd
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView criterioriesgoidtxt,descripciontxt,valortxt;
 
-        private LinearLayout itemLayout,colorlay;
+        private LinearLayout itemLayout,colorlay,infoLayout;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -84,6 +95,9 @@ public class CriterioRiesgoAdapter extends RecyclerView.Adapter<CriterioRiesgoAd
             valortxt=itemView.findViewById(R.id.tvValor);
             colorlay=itemView.findViewById(R.id.layoutCardColor);
             itemLayout = itemView.findViewById(R.id.itemLl);
+            infoLayout = itemView.findViewById(R.id.infoLl);
+
+
         }
     }
 
