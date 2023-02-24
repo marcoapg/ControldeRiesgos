@@ -73,13 +73,6 @@ public class RiesgoFragment extends Fragment implements RiesgoAdapter.RiesgoClic
     }
 
     @Override
-    public void onStart() {
-        obtenerJWT(mAuth.getCurrentUser().getEmail(),mAuth.getUid());
-
-        super.onStart();
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
@@ -107,6 +100,8 @@ public class RiesgoFragment extends Fragment implements RiesgoAdapter.RiesgoClic
         svBuscar = root.findViewById(R.id.buscarRiesgo);
         mAuth = FirebaseAuth.getInstance();
 
+        obtenerJWT(mAuth.getCurrentUser().getEmail(),mAuth.getUid(),this::onRiesgoClick, searchOn = false, "");
+
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +116,7 @@ public class RiesgoFragment extends Fragment implements RiesgoAdapter.RiesgoClic
         });
 
 
-        viewJsonData(this::onRiesgoClick, searchOn = false, "");
+        //viewJsonData(this::onRiesgoClick, searchOn = false, "");
 
 
 
@@ -153,7 +148,7 @@ public class RiesgoFragment extends Fragment implements RiesgoAdapter.RiesgoClic
 
 
 
-    private void obtenerJWT(String email,String uid){
+    private void obtenerJWT(String email,String uid,RiesgoAdapter.RiesgoClickInterface riesgoClickInterface, boolean searchOn, String s){
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://controlriesgosusat.pythonanywhere.com")
@@ -174,8 +169,11 @@ public class RiesgoFragment extends Fragment implements RiesgoAdapter.RiesgoClic
                 if(response.isSuccessful()){
                     AuthResponse obj = response.body();
 
-                    Log.i("Success: ",obj.getAccess_token());
+
                     token=obj.getAccess_token();
+                    Log.i("Success: ",obj.getAccess_token());
+                    viewJsonData(riesgoClickInterface,searchOn,s);
+
 
                 }else{
                     Log.i("No Success", String.valueOf(response.code()));
@@ -210,6 +208,7 @@ public class RiesgoFragment extends Fragment implements RiesgoAdapter.RiesgoClic
 
     private void viewJsonData(RiesgoAdapter.RiesgoClickInterface riesgoClickInterface, boolean searchOn, String s) {
 
+        Log.i("Success var: ",token);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://controlriesgosusat.pythonanywhere.com")
