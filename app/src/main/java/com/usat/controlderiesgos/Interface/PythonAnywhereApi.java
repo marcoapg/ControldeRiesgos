@@ -173,6 +173,9 @@ public interface PythonAnywhereApi {
     @POST("api_guardarriesgo")
     Call<ResponsePython> guardarRiesgo(@Body AddRiesgo riesgoAdd);
 
+    @POST("api_guardarriesgo")
+    Call<ResponsePython> guardarRiesgoToken(@Header ("Authorization") String token,@Body AddRiesgo riesgoAdd);
+
     @GET("api_obtenerriesgo/{id}")
     Call<ArrayList<RiesgoGETID>> obtenerRiesgoId(@Path("id") String riesgoid);
 

@@ -12,9 +12,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 import com.usat.controlderiesgos.Interface.PythonAnywhereApi;
 import com.usat.controlderiesgos.Model.AddRequestDescriptionValue;
 import com.usat.controlderiesgos.Model.AddRiesgo;
+import com.usat.controlderiesgos.Model.AuthRequest;
+import com.usat.controlderiesgos.Model.AuthResponse;
 import com.usat.controlderiesgos.Model.ResponsePython;
 import com.usat.controlderiesgos.R;
 import com.usat.controlderiesgos.databinding.FragmentCriterioImpactoAddBinding;
@@ -31,6 +34,9 @@ public class RiesgoAddFragment extends Fragment {
 
     private TextInputEditText riesgoDescEdt, riesgoVulnerabilidadEdt, riesgoAmenazaEdt,riesgoActivoEdt;
     private FragmentRiesgoAddBinding binding;
+    FirebaseAuth mAuth;
+
+    private String token;
     public RiesgoAddFragment() {
         // Required empty public constructor
     }
@@ -63,13 +69,14 @@ public class RiesgoAddFragment extends Fragment {
         riesgoVulnerabilidadEdt = root.findViewById(R.id.idEdtRiesgoVulnerabilidad);
         riesgoAmenazaEdt= root.findViewById(R.id.idEdtRiesgoAmenaza);
         riesgoActivoEdt= root.findViewById(R.id.idEdtRiesgoActivo);
+        mAuth = FirebaseAuth.getInstance();
 
         addRiesgoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if(riesgoDescEdt.getText().length()>0 && riesgoVulnerabilidadEdt.getText().length()>0&&riesgoAmenazaEdt.getText().length()>0&&riesgoActivoEdt.getText().length()>0){
-                    guardarRiesgo();
+                    obtenerJWT(mAuth.getCurrentUser().getEmail(),mAuth.getUid());
                 }else{
                     Toast.makeText(getActivity(),"Todos los campos deben estar completos",Toast.LENGTH_SHORT).show();
                 }
@@ -81,6 +88,46 @@ public class RiesgoAddFragment extends Fragment {
 
         return root;
     }
+
+    private void obtenerJWT(String email,String uid){
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://controlriesgosusat.pythonanywhere.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        PythonAnywhereApi pythonAnywhereApi = retrofit.create(PythonAnywhereApi.class);
+
+        AuthRequest objAuth = new AuthRequest();
+        objAuth.setUsername(email);
+        objAuth.setPassword(uid);
+
+        Call<AuthResponse> call = pythonAnywhereApi.obtenerToken(objAuth);
+
+        call.enqueue(new Callback<AuthResponse>() {
+            @Override
+            public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
+                if(response.isSuccessful()){
+                    AuthResponse obj = response.body();
+
+
+                    token=obj.getAccess_token();
+                    Log.i("Success: ",obj.getAccess_token());
+                    guardarRiesgo();
+
+                }else{
+                    Log.i("No Success", String.valueOf(response.code()));
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<AuthResponse> call, Throwable t) {
+                Log.i("Failure",t.getMessage());
+            }
+        });
+    }
+
 
     private void guardarRiesgo(){
         Retrofit retrofit = new Retrofit.Builder()
@@ -96,7 +143,7 @@ public class RiesgoAddFragment extends Fragment {
         objAdd.setAmenazaid(Integer.parseInt(String.valueOf(riesgoAmenazaEdt.getText())));
         objAdd.setActivoid(Integer.parseInt(String.valueOf(riesgoActivoEdt.getText())));
 
-        Call<ResponsePython> call = pythonAnywhereApi.guardarRiesgo(objAdd);
+        Call<ResponsePython> call = pythonAnywhereApi.guardarRiesgoToken("JWT "+token,objAdd);
 
         call.enqueue(new Callback<ResponsePython>() {
             @Override
